@@ -1,73 +1,24 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Davince Visuals</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <script src="script.js"></script>
 </head>
 <body>
     <header>
-        <h1>Welcome to Davince Visuals</h1>
-        <nav>
-            <ul>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#gallery">Gallery</a></li>
-                <li><a href="#booking">Book Now</a></li>
-                <li><a href="#contact">Contact Us</a></li>
-            </ul>
-        </nav>
+        <img src="/path/to/logo.png" alt="Logo" />
     </header>
-    <section id="services">
-        <h2>Our Services</h2>
-        <p>We offer a variety of services to enhance your visuals.</p>
+    <section class="hero" style="background-image: url('/path/to/background.jpg');">
+        <h1>Welcome to Davince Visuals</h1>
     </section>
-    <section id="software-store">
-        <h2>Software Store</h2>
-        <p>Buy our software with PayPal and mobile money payments!</p>
+    <section class="gallery">
+        <img src="/path/to/portfolio1.jpg" alt="Portfolio Image 1" />
+        <img src="/path/to/portfolio2.jpg" alt="Portfolio Image 2" />
+        <img src="/path/to/portfolio3.jpg" alt="Portfolio Image 3" />
     </section>
-    <section id="gallery">
-        <h2>Gallery</h2>
-        <p>Check out our recent work.</p>
+    <section class="software-store">
+        <img src="/path/to/vision-editor.png" alt="Vision Editor" />
     </section>
-    <section id="booking">
-        <h2>Book a Service</h2>
-        <form>
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-            <label for="date">Date:</label>
-            <input type="date" id="date" name="date" required>
-            <input type="submit" value="Book Now">
-        </form>
-    </section>
-    <section id="map">
-        <h2>Find Us</h2>
-        <div id="map-container"></div>
-        <script>
-            // Initialize map
-            function initMap() {
-                var location = { lat: -25.363, lng: 131.044 };
-                var map = new google.maps.Map(document.getElementById('map-container'), {
-                    zoom: 4,
-                    center: location
-                });
-                var marker = new google.maps.Marker({
-                    position: location,
-                    map: map
-                });
-            }
-        </script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
-    </section>
-    <section id="contact">
-        <h2>Contact Us</h2>
-        <p>Email: info@davincevisuals.com</p>
-        <p>Phone: (123) 456-7890</p>
-        <div class="social-media">
-            <a href="#">Facebook</a>
-            <a href="#">Instagram</a>
-        </div>
-    </section>
-    <footer>
-        <p>&copy; 2026 Davince Visuals</p>
-    </footer>
 </body>
 </html>
