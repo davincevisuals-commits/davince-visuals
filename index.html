@@ -95,6 +95,20 @@
     .card:hover { border-color: #00b5ad; transform: translateY(-5px); }
     .card h3 { color: #00b5ad; margin-top: 0; }
     .price { font-size: 1.5em; color: #ff6600; font-weight: bold; margin: 15px 0; }
+    .feature-list { list-style: none; padding: 0; margin: 15px 0 0; color: #ccc; font-size: 0.95em; }
+    .feature-list li { margin-bottom: 10px; padding-left: 22px; position: relative; }
+    .feature-list li::before { content: '✓'; position: absolute; left: 0; color: var(--accent); }
+    .preview-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-top: 30px; }
+    .preview-card, .testimonial-card { background: #111; border: 1px solid #222; border-radius: 14px; padding: 24px; }
+    .preview-card h3, .testimonial-card h3 { margin-top: 0; color: #00b5ad; }
+    .video-box { border-radius: 12px; overflow: hidden; margin: 18px 0; background: #000; }
+    .video-box iframe { width: 100%; height: 200px; border: 0; }
+    .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; margin-top: 24px; }
+    .testimonial-card p { color: #ddd; line-height: 1.7; }
+    .testimonial-stars { color: #ffb400; margin-bottom: 12px; }
+    .testimonial-author { margin-top: 16px; color: #aaa; font-size: 0.95em; }
+    body.light-mode .preview-card, body.light-mode .testimonial-card { background: #fff; border-color: #ddd; }
+    body.light-mode .testimonial-card p { color: #333; }
 
     /* Gallery */
     .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
@@ -319,6 +333,12 @@
       <h3>Creative Suite Pro</h3>
       <p>Professional-grade creative software for design and editing.</p>
       <div class="price">$49.99 / UGX 180,000</div>
+      <ul class="feature-list">
+        <li>Layer-based editing with AI-assisted retouching</li>
+        <li>Export presets for web, print, and social media</li>
+        <li>Built-in asset library & cloud sync</li>
+      </ul>
+      <a href="#product-previews" class="btn" style="background:#ff6600; margin-top:15px;">See Demo</a>
 
       <!-- PayPal -->
       <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
@@ -388,6 +408,12 @@
   <h3>Vision Editor</h3>
   <p>Fast, lightweight video editing software for creators on the go.</p>
   <div class="price">$29.99 / UGX 110,000</div>
+  <ul class="feature-list">
+    <li>Fast timeline editing with intelligent trimming</li>
+    <li>Mobile-friendly export and templates</li>
+    <li>Optimized performance for creators on the go</li>
+  </ul>
+  <a href="#product-previews" class="btn" style="background:#ff6600; margin-top:15px;">Watch Preview</a>
 
   <!-- PayPal -->
   <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
@@ -414,8 +440,56 @@
 </div>
 </section>
 
+  <section id="product-previews">
+    <h2>Product Previews</h2>
+    <div class="preview-grid">
+      <div class="preview-card">
+        <h3>Creative Suite Pro</h3>
+        <div class="video-box">
+          <iframe src="https://www.youtube.com/embed/nXhlK43KvS0?si=h9IKDD7CdLsbpXAy&amp;autoplay=0" title="Creative Suite Pro demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+        <ul class="feature-list">
+          <li>AI-enhanced photo editing workflow</li>
+          <li>Instant color grading and batch export</li>
+          <li>Smart asset browser with cloud backup</li>
+        </ul>
+      </div>
+      <div class="preview-card">
+        <h3>Vision Editor</h3>
+        <div class="video-box">
+          <iframe src="https://www.youtube.com/embed/nXhlK43KvS0?si=h9IKDD7CdLsbpXAy&amp;autoplay=0" title="Vision Editor demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+        <ul class="feature-list">
+          <li>Smooth timeline trimming with speed controls</li>
+          <li>Lightweight export for fast sharing</li>
+          <li>Designed for mobile creators and social media</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-<section id="gallery">
+  <section id="testimonials">
+    <h2>What our clients say</h2>
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p>"Creative Suite Pro transformed our workflow. The editing tools are fast, intuitive, and the exports look flawless every time."</p>
+        <div class="testimonial-author">— Amina N., Creative Director</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p>"Vision Editor helped us complete a campaign ahead of schedule. The interface is clean and the performance is perfect for on-the-go editing."</p>
+        <div class="testimonial-author">— Kevin M., Content Lead</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p>"The software previews made it easy to choose the right package. Support was quick and the final result felt premium."</p>
+        <div class="testimonial-author">— Sarah L., Brand Manager</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery">
     <h2>Portfolio</h2>
     <div class="gallery">
       <img src="portfolio1.jpg" alt="Action Image 1">
