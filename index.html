@@ -53,8 +53,95 @@
 
     /* Gallery */
     .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-    .gallery img, .gallery video { width: 100%; border-radius: 8px; cursor: pointer; transition: transform 0.3s; }
+    .gallery img, .gallery video { width: 100%; border-radius: 8px; cursor: zoom-in; transition: transform 0.3s; }
     .gallery img:hover, .gallery video:hover { transform: scale(1.05); }
+
+    .video-container { position: relative; }
+    .video-container iframe { width: 100%; height: 100%; min-height: 240px; border-radius: 8px; pointer-events: none; }
+    .video-trigger {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      background: rgba(0, 0, 0, 0.25);
+      border-radius: 8px;
+      transition: background 0.2s;
+      z-index: 2;
+    }
+    .video-trigger:hover { background: rgba(0, 0, 0, 0.35); }
+    .video-trigger::before {
+      content: '▶';
+      color: #fff;
+      font-size: 3rem;
+      text-shadow: 0 0 18px rgba(0,0,0,0.7);
+      letter-spacing: 0.05em;
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.95);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 2000;
+      overflow: hidden;
+    }
+    .lightbox.active { display: flex; }
+    .lightbox img, .lightbox .video-wrapper { max-width: 100%; max-height: 100%; border-radius: 12px; box-shadow: 0 30px 80px rgba(0,0,0,0.7); }
+    .lightbox .video-wrapper { display: none; width: 100%; height: 100%; }
+    .lightbox .video-wrapper.active { display: block; }
+    .lightbox .video-wrapper iframe { width: 100%; height: 100%; border: 0; border-radius: 12px; }
+    .lightbox .nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.18);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      font-size: 1.6rem;
+      transition: background 0.2s, transform 0.2s;
+      z-index: 2100;
+    }
+    .lightbox .nav-btn:hover { background: rgba(255,255,255,0.16); transform: translateY(-50%) scale(1.05); }
+    .lightbox .nav-btn.prev { left: 20px; }
+    .lightbox .nav-btn.next { right: 20px; }
+    .lightbox .caption {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #fff;
+      text-align: center;
+      max-width: 90%;
+      font-size: 1rem;
+      letter-spacing: 0.03em;
+      opacity: 0.95;
+    }
+    .lightbox .close-btn {
+      top: 24px;
+      right: 24px;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.22);
+      display: grid;
+      place-items: center;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .lightbox .close-btn:hover { background: rgba(255,255,255,0.2); transform: scale(1.05); }
 
     /* Forms & Inputs */
     .form-container { max-width: 700px; margin: auto; background: #111; padding: 30px; border-radius: 10px; border: 1px solid #222; }
@@ -248,9 +335,10 @@
       <img src="portfolio5.jpg" alt="Action Image 5">
 
       <div class="video-container">
+        <div class="video-trigger" data-video-src="https://www.youtube.com/embed/nXhlK43KvS0?si=h9IKDD7CdLsbpXAy&amp;autoplay=1" aria-label="Open video in lightbox"></div>
         <iframe  
-        src="https://www.youtube.com/embed/nXhlK43KvS0?si=h9IKDD7CdLsbpXAy&amp" 
-        title="YouTube video player" 
+        src="https://www.youtube.com/embed/nXhlK43KvS0?si=h9IKDD7CdLsbpXAy&amp;" 
+        title="YouTube video preview" 
         frameborder="0" 
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         referrerpolicy="strict-origin-when-cross-origin"
@@ -260,8 +348,18 @@
 
 
 
-
       </div>
+    </div>
+
+    <div class="lightbox" id="lightbox">
+      <button class="close-btn" id="lightboxClose" aria-label="Close lightbox">×</button>
+      <button class="nav-btn prev" id="lightboxPrev" aria-label="Previous item">‹</button>
+      <button class="nav-btn next" id="lightboxNext" aria-label="Next item">›</button>
+      <img src="" alt="Expanded portfolio image" id="lightboxImage">
+      <div class="video-wrapper" id="lightboxVideoWrapper">
+        <iframe id="lightboxVideo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+      <div class="caption" id="lightboxCaption"></div>
     </div>
   </section>
 
@@ -325,5 +423,86 @@
     <p>&copy; 2026 Davince Visuals. All rights reserved. <br> Powered by Art & Technology.</p>
   </footer>
 
+  <script>
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const lightboxVideoWrapper = document.getElementById('lightboxVideoWrapper');
+    const lightboxVideo = document.getElementById('lightboxVideo');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+    const closeButton = document.getElementById('lightboxClose');
+    const prevButton = document.getElementById('lightboxPrev');
+    const nextButton = document.getElementById('lightboxNext');
+
+    const galleryImages = Array.from(document.querySelectorAll('.gallery img'));
+    const videoTrigger = document.querySelector('.video-trigger');
+    const lightboxItems = galleryImages.map((img) => ({
+      type: 'image',
+      src: img.src,
+      alt: img.alt || 'Portfolio image',
+    }));
+
+    if (videoTrigger) {
+      lightboxItems.push({
+        type: 'video',
+        src: videoTrigger.dataset.videoSrc,
+        alt: 'Portfolio video',
+      });
+    }
+
+    let currentItemIndex = 0;
+
+    const showLightboxItem = (index) => {
+      currentItemIndex = (index + lightboxItems.length) % lightboxItems.length;
+      const item = lightboxItems[currentItemIndex];
+      if (item.type === 'image') {
+        lightboxImage.src = item.src;
+        lightboxImage.style.display = 'block';
+        lightboxVideoWrapper.classList.remove('active');
+        lightboxVideo.src = '';
+      } else {
+        lightboxImage.style.display = 'none';
+        lightboxVideoWrapper.classList.add('active');
+        lightboxVideo.src = item.src;
+      }
+      lightboxCaption.textContent = item.alt;
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    };
+
+    document.querySelectorAll('.gallery img').forEach((img, index) => {
+      img.addEventListener('click', () => {
+        showLightboxItem(index);
+      });
+    });
+
+    if (videoTrigger) {
+      videoTrigger.addEventListener('click', () => {
+        showLightboxItem(lightboxItems.length - 1);
+      });
+    }
+
+    const closeLightbox = () => {
+      lightbox.classList.remove('active');
+      lightboxVideo.src = '';
+      document.body.style.overflow = '';
+    };
+
+    prevButton.addEventListener('click', () => showLightboxItem(currentItemIndex - 1));
+    nextButton.addEventListener('click', () => showLightboxItem(currentItemIndex + 1));
+    closeButton.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (event) => {
+      if (event.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (!lightbox.classList.contains('active')) return;
+      if (event.key === 'Escape') {
+        closeLightbox();
+      } else if (event.key === 'ArrowLeft') {
+        showLightboxItem(currentItemIndex - 1);
+      } else if (event.key === 'ArrowRight') {
+        showLightboxItem(currentItemIndex + 1);
+      }
+    });
+  </script>
 </body>
 </html>
