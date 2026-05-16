@@ -273,6 +273,7 @@
     @keyframes fadeInUp { from {opacity:0; transform:translateY(50px);} to {opacity:1; transform:translateY(0);} }
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 </head>
 <body>
 
@@ -531,10 +532,18 @@
           <option value="it">IT Support / Tech Consultation</option>
           <option value="other">Digital Art Commission</option>
         </select>
-        <div class="calendly-note" style="color:#ccc; margin:18px 0 10px; font-size:0.95em;">
-          Choose a convenient time below — real availability, no back-and-forth.
+        <label for="bookingDate" style="display:block; margin:18px 0 8px; color:#aaa; font-size:0.9em;">Preferred Date</label>
+        <input id="bookingDate" type="text" placeholder="Select a date" required readonly>
+        <label for="bookingTime" style="display:block; margin:18px 0 8px; color:#aaa; font-size:0.9em;">Preferred Time</label>
+        <select id="bookingTime" required>
+          <option value="">-- Select a Time Window --</option>
+          <option value="morning">Morning (9am–12pm)</option>
+          <option value="afternoon">Afternoon (1pm–4pm)</option>
+          <option value="evening">Evening (5pm–8pm)</option>
+        </select>
+        <div class="calendar-note" style="color:#ccc; margin:18px 0 10px; font-size:0.95em;">
+          Pick a date and time window. We’ll confirm exact availability immediately.
         </div>
-        <div class="calendly-inline-widget" data-url="https://calendly.com/your-username/30min" style="min-width:320px;height:580px;"></div>
         <textarea placeholder="Tell us more about your project..." rows="4"></textarea>
         <button type="submit" class="btn">Confirm Booking Request</button>
       </form>
@@ -725,7 +734,20 @@
       });
     }, { threshold: 0.15 });
     fadeElements.forEach((el) => observer.observe(el));
+
   </script>
-  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script>
+    flatpickr('#bookingDate', {
+      minDate: 'today',
+      dateFormat: 'F j, Y',
+      altInput: true,
+      altFormat: 'F j, Y',
+      defaultDate: 'today',
+      locale: {
+        firstDayOfWeek: 1
+      }
+    });
+  </script>
 </body>
 </html>
