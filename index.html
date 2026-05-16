@@ -531,8 +531,10 @@
           <option value="it">IT Support / Tech Consultation</option>
           <option value="other">Digital Art Commission</option>
         </select>
-        <label style="display:block; margin-bottom:8px; color:#aaa; font-size:0.9em;">Preferred Date</label>
-        <input type="date" required>
+        <div class="calendly-note" style="color:#ccc; margin:18px 0 10px; font-size:0.95em;">
+          Choose a convenient time below — real availability, no back-and-forth.
+        </div>
+        <div class="calendly-inline-widget" data-url="https://calendly.com/your-username/30min" style="min-width:320px;height:580px;"></div>
         <textarea placeholder="Tell us more about your project..." rows="4"></textarea>
         <button type="submit" class="btn">Confirm Booking Request</button>
       </form>
@@ -724,5 +726,6 @@
     }, { threshold: 0.15 });
     fadeElements.forEach((el) => observer.observe(el));
   </script>
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript"></script>
 </body>
 </html>
