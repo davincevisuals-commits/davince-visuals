@@ -98,6 +98,10 @@
     .feature-list { list-style: none; padding: 0; margin: 15px 0 0; color: #ccc; font-size: 0.95em; }
     .feature-list li { margin-bottom: 10px; padding-left: 22px; position: relative; }
     .feature-list li::before { content: '✓'; position: absolute; left: 0; color: var(--accent); }
+    .store-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+    .store-actions .btn, .store-actions button { flex: 1 1 160px; width: auto; }
+    .store-actions form { margin: 0; }
+    .store-card img { border-radius: 10px; margin-bottom: 18px; }
     .preview-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-top: 30px; }
     .preview-card, .testimonial-card { background: #111; border: 1px solid #222; border-radius: 14px; padding: 24px; }
     .preview-card h3, .testimonial-card h3 { margin-top: 0; color: #00b5ad; }
@@ -324,122 +328,79 @@
   </section>
 
   <section id="store">
-  <h2>Software Store</h2>
-  <div class="grid">
+    <h2>Software Store</h2>
+    <div class="grid">
 
-    <!-- Item 1 -->
-    <div class="card">
-      <img src="images/creative-suite-pro.jpg" alt="Creative Suite Pro Thumbnail">
-      <h3>Creative Suite Pro</h3>
-      <p>Professional-grade creative software for design and editing.</p>
-      <div class="price">$49.99 / UGX 180,000</div>
-      <ul class="feature-list">
-        <li>Layer-based editing with AI-assisted retouching</li>
-        <li>Export presets for web, print, and social media</li>
-        <li>Built-in asset library & cloud sync</li>
-      </ul>
-      <a href="#product-previews" class="btn" style="background:#ff6600; margin-top:15px;">See Demo</a>
-
-      <!-- PayPal -->
-      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-  <input type="hidden" name="cmd" value="_xclick">
-  <input type="hidden" name="business" value="davincevisuals@gmail.com">
-  <input type="hidden" name="item_name" value="Creative Suite Pro">
-  <input type="hidden" name="amount" value="49.99">
-  <input type="hidden" name="currency_code" value="USD">
-  <button type="submit" style="background:none; border:none; cursor:pointer;">
-    <img src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" 
-         alt="Pay with PayPal" 
-         style="width:180px; border-radius:6px;">
-  </button>
-</form>
-
-<!-- Secure Payment Badge -->
-<div style="text-align:center; margin-top:10px;">
-  <img src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_111x69.jpg" 
-       alt="Secure PayPal Payment" 
-       style="width:120px; opacity:0.9;">
-  <p style="font-size:0.8em; color:#aaa; margin-top:5px;">Secure Checkout with PayPal</p>
-</div>
-
-
-
-      <!-- UGX -->
-      <div style="margin-top:15px;">
-        <a href="tel:*165#" class="btn" style="background:#ff6600;">Pay with MTN Mobile Money</a>
+      <div class="card store-card">
+        <img src="images/creative-suite-pro.jpg" alt="Creative Suite Pro">
+        <h3>Creative Suite Pro</h3>
+        <p>Creative software for fast photo editing, compositing, and content export.</p>
+        <div class="price">$49.99 / UGX 180,000</div>
+        <ul class="feature-list">
+          <li>Layer-based editing with AI retouch</li>
+          <li>Export presets for web and social</li>
+          <li>Cloud-ready asset library</li>
+        </ul>
+        <div class="store-actions">
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+            <input type="hidden" name="cmd" value="_xclick">
+            <input type="hidden" name="business" value="davincevisuals@gmail.com">
+            <input type="hidden" name="item_name" value="Creative Suite Pro">
+            <input type="hidden" name="amount" value="49.99">
+            <input type="hidden" name="currency_code" value="USD">
+            <button class="btn" type="submit">Buy with PayPal</button>
+          </form>
+          <a href="#product-previews" class="btn">Watch Demo</a>
+        </div>
       </div>
-      <p style="font-size:0.5em; color:#aaa; text-align:center;">
-      </p>
-    </div>
 
-    <!-- Item 2 -->
-    <div class="card">
-      <img src="images/advanced-tools.jpg" alt="Advanced Tools Thumbnail">
-      <h3>Advanced Tools for Digital Artists</h3>
-      <p>Specialized software suite tailored for illustrators and concept artists.</p>
-      <div class="price">$59.99 / UGX 220,000</div>
-
-      <!-- PayPal -->
-      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-  <input type="hidden" name="cmd" value="_xclick">
-  <input type="hidden" name="business" value="davincevisuals@gmail.com">
-  <input type="hidden" name="item_name" value="Advance Tools for Digital Artists">
-  <input type="hidden" name="amount" value="29.99">
-  <input type="hidden" name="currency_code" value="USD">
-  <button type="submit" style="background:none; border:none; cursor:pointer;">
-    <img src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" 
-         alt="Pay with PayPal" 
-         style="width:180px; border-radius:6px;">
-  </button>
-</form>
-
-
-      <!-- UGX -->
-      <div style="margin-top:15px;">
-        <a href="tel:*165#" class="btn" style="background:#ff6600;">Pay with Airtel Money</a>
+      <div class="card store-card">
+        <img src="images/advanced-tools.jpg" alt="Advanced Tools Thumbnail">
+        <h3>Advanced Tools for Digital Artists</h3>
+        <p>Powerful design tools built for illustrators, concept artists, and visual creators.</p>
+        <div class="price">$59.99 / UGX 220,000</div>
+        <ul class="feature-list">
+          <li>Vector and raster workflow support</li>
+          <li>Brush engine with advanced presets</li>
+          <li>Export-ready creative templates</li>
+        </ul>
+        <div class="store-actions">
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+            <input type="hidden" name="cmd" value="_xclick">
+            <input type="hidden" name="business" value="davincevisuals@gmail.com">
+            <input type="hidden" name="item_name" value="Advanced Tools for Digital Artists">
+            <input type="hidden" name="amount" value="29.99">
+            <input type="hidden" name="currency_code" value="USD">
+            <button class="btn" type="submit">Buy with PayPal</button>
+          </form>
+          <a href="#product-previews" class="btn">Watch Preview</a>
+        </div>
       </div>
-      <p style="font: size 0.5em;em; color:#aaa; text-align:center;">
-      </p>
+
+      <div class="card store-card">
+        <img src="vision-editor.png" alt="Vision Editor" style="width:100%; border-radius:8px; margin-bottom:15px;">
+        <h3>Vision Editor</h3>
+        <p>Lightweight video editing for creators who need speed and polished output.</p>
+        <div class="price">$29.99 / UGX 110,000</div>
+        <ul class="feature-list">
+          <li>Fast timeline trimming and export</li>
+          <li>Mobile-friendly sharing presets</li>
+          <li>Optimized for on-the-go creativity</li>
+        </ul>
+        <div class="store-actions">
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+            <input type="hidden" name="cmd" value="_xclick">
+            <input type="hidden" name="business" value="davincevisuals@gmail.com">
+            <input type="hidden" name="item_name" value="Vision Editor">
+            <input type="hidden" name="amount" value="29.99">
+            <input type="hidden" name="currency_code" value="USD">
+            <button class="btn" type="submit">Buy with PayPal</button>
+          </form>
+          <a href="#product-previews" class="btn">Watch Preview</a>
+        </div>
+      </div>
     </div>
-
-      <!-- Item 3 -->
-    <div class="card">
-  <img src="vision-editor.png" alt="Vision Editor Thumbnail" style="width:100%; border-radius:8px; margin-bottom:15px;">
-  <h3>Vision Editor</h3>
-  <p>Fast, lightweight video editing software for creators on the go.</p>
-  <div class="price">$29.99 / UGX 110,000</div>
-  <ul class="feature-list">
-    <li>Fast timeline editing with intelligent trimming</li>
-    <li>Mobile-friendly export and templates</li>
-    <li>Optimized performance for creators on the go</li>
-  </ul>
-  <a href="#product-previews" class="btn" style="background:#ff6600; margin-top:15px;">Watch Preview</a>
-
-  <!-- PayPal -->
-  <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-  <input type="hidden" name="cmd" value="_xclick">
-  <input type="hidden" name="business" value="davincevisuals@gmail.com">
-  <input type="hidden" name="item_name" value="Vision Editor">
-  <input type="hidden" name="amount" value="29.99">
-  <input type="hidden" name="currency_code" value="USD">
-  <button type="submit" style="background:none; border:none; cursor:pointer;">
-    <img src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" 
-         alt="Pay with PayPal" 
-         style="width:180px; border-radius:6px;">
-  </button>
-</form>
-
-
-  <!-- UGX -->
-  <div style="margin-top:15px;">
-    <a href="tel:*165#" class="btn" style="background:#ff6600;">Pay with MTN Mobile Money</a>
-  </div>
-  <p style="font-size:0.9em; color:#aaa; text-align:center;">
-    Dial *165# → Payments → Enter Merchant Code: 789012 → Amount: UGX 110,000
-  </p>
-</div>
-</section>
-
+  </section>
   <section id="product-previews">
     <h2>Product Previews</h2>
     <div class="preview-grid">
