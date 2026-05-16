@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Davince Visuals | Photography, Digital Art & IT</title>
+  <meta name="description" content="Professional photography, cinematic film production, and digital art services in Uganda. Expert IT solutions and creative software tools. Davince Visuals delivers premium visual content and technical expertise.">
+  <meta name="keywords" content="Digital Artist Uganda, Professional Photography, Film Production, IT Solutions, Creative Services, Cinematic Storytelling">
+  <title>Davince Visuals | Professional Photography, Film Production & Digital Art in Uganda</title>
   <style>
     :root {
       --bg: #000;
@@ -239,6 +241,41 @@
     }
     .lightbox .close-btn:hover { background: rgba(255,255,255,0.2); transform: scale(1.05); }
 
+    /* Coming Soon Modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 3000;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal-content {
+      background: var(--surface);
+      padding: 40px;
+      border-radius: 12px;
+      text-align: center;
+      max-width: 500px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.7);
+      border: 1px solid var(--border);
+    }
+    .modal-content h3 { color: var(--accent); margin-top: 0; font-size: 1.8em; }
+    .modal-content p { color: var(--text); line-height: 1.6; margin: 16px 0; }
+    .modal-close-btn {
+      margin-top: 24px;
+      padding: 12px 28px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1em;
+      transition: background 0.3s;
+    }
+    .modal-close-btn:hover { background: var(--accent2); }
+
     /* Forms & Inputs */
     .form-container { max-width: 700px; margin: auto; background: #111; padding: 30px; border-radius: 10px; border: 1px solid #222; }
     input, textarea, select { width: 100%; padding: 12px; border-radius: 5px; border: 1px solid #333; background: #0a0a0a; color: #fff; box-sizing: border-box; margin-bottom: 15px; font-family: inherit; }
@@ -290,8 +327,8 @@
     <a href="#gallery">Portfolio</a>
     <a href="#booking">Book Now</a>
     <a href="#contact">Contact</a>
-    <a href="#" onclick="alert('Login Triggered')">Login</a>
-    <a href="#" onclick="alert('Sign Up Triggered')">Sign Up</a>
+    <a href="#" onclick="showComingSoonModal(event)">Login</a>
+    <a href="#" onclick="showComingSoonModal(event)">Sign Up</a>
     <button id="themeToggle" class="theme-toggle" type="button">Light Mode</button>
   </nav>
 
@@ -351,7 +388,6 @@
             <input type="hidden" name="currency_code" value="USD">
             <button class="btn" type="submit">Buy with PayPal</button>
           </form>
-          <a href="#product-previews" class="btn">Watch Demo</a>
         </div>
       </div>
 
@@ -374,7 +410,6 @@
             <input type="hidden" name="currency_code" value="USD">
             <button class="btn" type="submit">Buy with PayPal</button>
           </form>
-          <a href="#product-previews" class="btn">Watch Preview</a>
         </div>
       </div>
 
@@ -397,35 +432,7 @@
             <input type="hidden" name="currency_code" value="USD">
             <button class="btn" type="submit">Buy with PayPal</button>
           </form>
-          <a href="#product-previews" class="btn">Watch Preview</a>
         </div>
-      </div>
-    </div>
-  </section>
-  <section id="product-previews">
-    <h2>Product Previews</h2>
-    <div class="preview-grid">
-      <div class="preview-card">
-        <h3>Creative Suite Pro</h3>
-        <div class="video-box">
-          <iframe src="https://www.youtube.com/embed/nXhlK43KvS0?si=h9IKDD7CdLsbpXAy&amp;autoplay=0" title="Creative Suite Pro demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-        </div>
-        <ul class="feature-list">
-          <li>AI-enhanced photo editing workflow</li>
-          <li>Instant color grading and batch export</li>
-          <li>Smart asset browser with cloud backup</li>
-        </ul>
-      </div>
-      <div class="preview-card">
-        <h3>Vision Editor</h3>
-        <div class="video-box">
-          <iframe src="https://www.youtube.com/embed/nXhlK43KvS0?si=h9IKDD7CdLsbpXAy&amp;autoplay=0" title="Vision Editor demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-        </div>
-        <ul class="feature-list">
-          <li>Smooth timeline trimming with speed controls</li>
-          <li>Lightweight export for fast sharing</li>
-          <li>Designed for mobile creators and social media</li>
-        </ul>
       </div>
     </div>
   </section>
@@ -454,11 +461,26 @@
   <section id="gallery">
     <h2>Portfolio</h2>
     <div class="gallery">
-      <img src="portfolio1.jpg" alt="Action Image 1">
-      <img src="portfolio2.jpg" alt="Action Image 2">
-      <img src="portfolio3.jpg" alt="Action Image 3">
-      <img src="portfolio4.jpg" alt="Action Image 4">
-      <img src="portfolio5.jpg" alt="Action Image 5">
+      <picture>
+        <source srcset="portfolio1.webp" type="image/webp">
+        <img src="portfolio1.jpg" alt="Action Image 1" loading="lazy">
+      </picture>
+      <picture>
+        <source srcset="portfolio2.webp" type="image/webp">
+        <img src="portfolio2.jpg" alt="Action Image 2" loading="lazy">
+      </picture>
+      <picture>
+        <source srcset="portfolio3.webp" type="image/webp">
+        <img src="portfolio3.jpg" alt="Action Image 3" loading="lazy">
+      </picture>
+      <picture>
+        <source srcset="portfolio4.webp" type="image/webp">
+        <img src="portfolio4.jpg" alt="Action Image 4" loading="lazy">
+      </picture>
+      <picture>
+        <source srcset="portfolio5.webp" type="image/webp">
+        <img src="portfolio5.jpg" alt="Action Image 5" loading="lazy">
+      </picture>
 
       <div class="video-container">
         <div class="video-trigger" data-video-src="https://www.youtube.com/embed/nXhlK43KvS0?si=h9IKDD7CdLsbpXAy&amp;autoplay=1" aria-label="Open video in lightbox"></div>
@@ -477,7 +499,15 @@
       </div>
     </div>
 
-    <div class="lightbox" id="lightbox">
+    <div class="modal-overlay" id="comingSoonModal">
+    <div class="modal-content">
+      <h3>Coming Soon</h3>
+      <p>User authentication features are being prepared. We'll notify you when they're ready.</p>
+      <button class="modal-close-btn" onclick="closeComingSoonModal()">Got it</button>
+    </div>
+  </div>
+
+  <div class="lightbox" id="lightbox">
       <button class="close-btn" id="lightboxClose" aria-label="Close lightbox">×</button>
       <button class="nav-btn prev" id="lightboxPrev" aria-label="Previous item">‹</button>
       <button class="nav-btn next" id="lightboxNext" aria-label="Next item">›</button>
@@ -495,9 +525,15 @@
       <div class="compare-block">
         <div class="compare-labels"><span>Before</span><span>After</span></div>
         <div class="compare-slider" data-sample="1">
-          <img src="portfolio1.jpg" alt="Before edit example">
+          <picture>
+            <source srcset="portfolio1.webp" type="image/webp">
+            <img src="portfolio1.jpg" alt="Before edit example">
+          </picture>
           <div class="after-image">
-            <img src="portfolio2.jpg" alt="After edit example">
+            <picture>
+              <source srcset="portfolio2.webp" type="image/webp">
+              <img src="portfolio2.jpg" alt="After edit example">
+            </picture>
           </div>
           <div class="slider-handle" aria-label="Drag to compare"></div>
         </div>
@@ -505,9 +541,15 @@
       <div class="compare-block">
         <div class="compare-labels"><span>Before</span><span>After</span></div>
         <div class="compare-slider" data-sample="2">
-          <img src="portfolio3.jpg" alt="Before art retouch">
+          <picture>
+            <source srcset="portfolio3.webp" type="image/webp">
+            <img src="portfolio3.jpg" alt="Before art retouch">
+          </picture>
           <div class="after-image">
-            <img src="portfolio4.jpg" alt="After art retouch">
+            <picture>
+              <source srcset="portfolio4.webp" type="image/webp">
+              <img src="portfolio4.jpg" alt="After art retouch">
+            </picture>
           </div>
           <div class="slider-handle" aria-label="Drag to compare"></div>
         </div>
@@ -595,7 +637,7 @@
     const prevButton = document.getElementById('lightboxPrev');
     const nextButton = document.getElementById('lightboxNext');
 
-    const galleryImages = Array.from(document.querySelectorAll('.gallery img'));
+    const galleryImages = Array.from(document.querySelectorAll('.gallery picture img'));
     const videoTrigger = document.querySelector('.video-trigger');
     const lightboxItems = galleryImages.map((img) => ({
       type: 'image',
@@ -631,7 +673,7 @@
       document.body.style.overflow = 'hidden';
     };
 
-    document.querySelectorAll('.gallery img').forEach((img, index) => {
+    document.querySelectorAll('.gallery picture img').forEach((img, index) => {
       img.addEventListener('click', () => {
         showLightboxItem(index);
       });
@@ -664,6 +706,19 @@
       } else if (event.key === 'ArrowRight') {
         showLightboxItem(currentItemIndex + 1);
       }
+    });
+
+    const showComingSoonModal = (event) => {
+      event.preventDefault();
+      document.getElementById('comingSoonModal').classList.add('active');
+    };
+
+    const closeComingSoonModal = () => {
+      document.getElementById('comingSoonModal').classList.remove('active');
+    };
+
+    document.getElementById('comingSoonModal').addEventListener('click', (event) => {
+      if (event.target.id === 'comingSoonModal') closeComingSoonModal();
     });
 
     const themeToggle = document.getElementById('themeToggle');
