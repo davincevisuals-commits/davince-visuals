@@ -1,24 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Davince Visuals</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Davince Visuals | Photography, Digital Art & IT</title>
+  <meta name="description" content="Professional photography, cinematic film production, and digital art services in Uganda. Expert IT solutions and creative software tools. Davince Visuals deliver[...]
+  <meta name="keywords" content="Digital Artist Uganda, Professional Photography, Film Production, IT Solutions, Creative Services, Cinematic Storytelling">
+  <title>Davince Visuals | Professional Photography, Film Production & Digital Art in Uganda</title>
   <style>
+    :root {
+      --nav-height: 64px;
+      --bg: #000;
+      --surface: #111;
+      --text: #f5f5f5;
+      --muted: #aaa;
+      --accent: #00b5ad;
+      --accent2: #ff6600;
+      --border: #333;
+      --input-bg: #0a0a0a;
+      --input-border: #333;
+    }
+
     body {
       font-family: 'Helvetica Neue', sans-serif;
       margin: 0;
       padding: 0;
-      color: #f5f5f5;
+      color: var(--text);
       scroll-behavior: smooth;
-      background: #000;
+      background: var(--bg);
     }
-    
+
+    body.light-mode {
+      --bg: #f5f7fb;
+      --surface: #fff;
+      --text: #111;
+      --muted: #666;
+      --accent: #00696b;
+      --accent2: #c65a00;
+      --border: #ddd;
+      --input-bg: #fff;
+      --input-border: #ccc;
+    }
+
     /* Header & Navigation */
-    header {a
+    header {
       position: relative;
       height: 100vh;
       display: flex;
@@ -34,18 +58,51 @@
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
       background: rgba(0,0,0,0.6);
+      pointer-events: none;
     }
     header img.logo { width: 180px; margin-bottom: 20px; z-index: 1; }
     header h1 { font-size: 3.5em; margin: 0; color: #00b5ad; animation: fadeInDown 2s; z-index: 1; }
     header p { font-size: 1.3em; color: #ff6600; animation: fadeInUp 2s; z-index: 1; }
     
-    nav { position: fixed; top: 0; width: 100%; background: #111; padding: 15px; text-align: center; z-index: 1000; }
-    nav a { margin: 0 15px; color: #f5f5f5; text-decoration: none; font-weight: bold; transition: color 0.3s; font-size: 0.9em; }
-    nav a:hover { color: #00b5ad; }
+    nav { position: fixed; top: 0; width: 100%; background: var(--surface); padding: 15px; text-align: center; z-index: 1000; }
+    nav a, nav button.theme-toggle { margin: 0 12px; color: var(--text); text-decoration: none; font-weight: bold; transition: color 0.3s, background 0.3s, transform 0.3s; font-size: 0.9em; }
+    nav a:hover, nav button.theme-toggle:hover { color: var(--accent); transform: translateY(-1px); }
+    nav button.theme-toggle {
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.08);
+      border-radius: 999px;
+      padding: 8px 16px;
+      cursor: pointer;
+      min-width: 110px;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.04);
+      transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
+    }
+
+    nav button.theme-toggle:hover {
+      transform: translateY(-1px) scale(1.02);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    }
+
+    body.light-mode nav button.theme-toggle {
+      border-color: rgba(0,0,0,0.15);
+      background: rgba(0,0,0,0.06);
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05);
+    }
 
     /* Layout Sections */
-    section { padding: 80px 20px; max-width: 1100px; margin: auto; }
-    section h2 { font-size: 2.5em; margin-bottom: 40px; border-bottom: 2px solid #ff6600; display: inline-block; }
+    section { padding: 80px 20px; max-width: 1100px; margin: auto; scroll-margin-top: calc(var(--nav-height) + 16px); }
+    section h2 {
+      font-size: 2.1em;
+      margin: 0 0 20px 0;
+      border-bottom: 2px solid #ff6600;
+      display: block;
+      position: sticky;
+      top: calc(var(--nav-height) + 12px);
+      z-index: 900;
+      background: var(--surface);
+      padding: 10px 18px;
+      border-radius: 6px;
+    }
     
     /* Grid Systems */
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
@@ -53,18 +110,202 @@
     .card:hover { border-color: #00b5ad; transform: translateY(-5px); }
     .card h3 { color: #00b5ad; margin-top: 0; }
     .price { font-size: 1.5em; color: #ff6600; font-weight: bold; margin: 15px 0; }
+    .feature-list { list-style: none; padding: 0; margin: 15px 0 0; color: #ccc; font-size: 0.95em; }
+    .feature-list li { margin-bottom: 10px; padding-left: 22px; position: relative; }
+    .feature-list li::before { content: '✓'; position: absolute; left: 0; color: var(--accent); }
+    .store-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+    .store-actions .btn, .store-actions button { flex: 1 1 160px; width: auto; }
+    .store-actions form { margin: 0; }
+    .store-card img { border-radius: 10px; margin-bottom: 18px; }
+    .preview-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-top: 30px; }
+    .preview-card, .testimonial-card { background: #111; border: 1px solid #222; border-radius: 14px; padding: 24px; }
+    .preview-card h3, .testimonial-card h3 { margin-top: 0; color: #00b5ad; }
+    .video-box { border-radius: 12px; overflow: hidden; margin: 18px 0; background: #000; }
+    .video-box iframe { width: 100%; height: 200px; border: 0; }
+    .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; margin-top: 24px; }
+    .testimonial-card p { color: #ddd; line-height: 1.7; }
+    .testimonial-stars { color: #ffb400; margin-bottom: 12px; }
+    .testimonial-author { margin-top: 16px; color: #aaa; font-size: 0.95em; }
+    body.light-mode .preview-card, body.light-mode .testimonial-card { background: #fff; border-color: #ddd; }
+    body.light-mode .testimonial-card p { color: #333; }
 
     /* Gallery */
     .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-    .gallery img, .gallery video { width: 100%; border-radius: 8px; cursor: pointer; transition: transform 0.3s; }
+    .gallery img, .gallery video { width: 100%; border-radius: 8px; cursor: zoom-in; transition: transform 0.3s; }
     .gallery img:hover, .gallery video:hover { transform: scale(1.05); }
+
+    .video-container { position: relative; }
+    .video-container iframe { width: 100%; height: 100%; min-height: 240px; border-radius: 8px; pointer-events: none; }
+    .video-trigger {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      background: rgba(0, 0, 0, 0.25);
+      border-radius: 8px;
+      transition: background 0.2s;
+      z-index: 2;
+    }
+    .video-trigger:hover { background: rgba(0, 0, 0, 0.35); }
+    .video-trigger::before {
+      content: '▶';
+      color: #fff;
+      font-size: 3rem;
+      text-shadow: 0 0 18px rgba(0,0,0,0.7);
+      letter-spacing: 0.05em;
+    }
+
+    .before-after-wrap { max-width: 1000px; margin: 40px auto 0; }
+    .compare-block { margin-bottom: 32px; }
+    .compare-labels { display: flex; justify-content: space-between; color: var(--muted); margin-bottom: 14px; font-size: 0.95rem; }
+    .compare-slider { position: relative; overflow: hidden; border-radius: 14px; }
+    .compare-slider img { display: block; width: 100%; height: auto; }
+    .fade-in-up { opacity: 0; transform: translateY(30px); transition: opacity 0.9s ease, transform 0.9s ease; }
+    .fade-in-up.visible { opacity: 1; transform: translateY(0); }
+    .after-image { position: absolute; top: 0; left: 0; width: 50%; height: 100%; overflow: hidden; }
+    .after-image img { display: block; width: 100%; height: auto; }
+    .slider-handle { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 4px; height: 100%; background: rgba(255,255,255,0.9); cursor: ew-resize; z-index: 2; box-shadow: 0 [...]
+    .slider-handle:hover { background: rgba(255,255,255,1); transform: translateX(-50%) scaleX(1.05); box-shadow: 0 0 18px rgba(255,255,255,0.45); }
+    .slider-handle::before { content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 32px;
+      height: 32px;
+      background: rgba(255,255,255,0.9);
+      border: 1px solid rgba(255,255,255,0.6);
+      border-radius: 50%;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .slider-handle:hover::before { transform: translate(-50%, -50%) scale(1.08); box-shadow: 0 0 18px rgba(255,255,255,0.4); }
+
+    .light-mode .before-after-wrap .compare-labels,
+    .light-mode .before-after-wrap .slider-handle,
+    .light-mode .before-after-wrap .slider-handle::before {
+      color: #333;
+      background: rgba(0,0,0,0.08);
+      border-color: rgba(0,0,0,0.15);
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.95);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 2000;
+      overflow: hidden;
+    }
+    .lightbox.active { display: flex; }
+    .lightbox img, .lightbox .video-wrapper { max-width: 100%; max-height: 100%; border-radius: 12px; box-shadow: 0 30px 80px rgba(0,0,0,0.7); }
+    .lightbox .video-wrapper { display: none; width: 100%; height: 100%; }
+    .lightbox .video-wrapper.active { display: block; }
+    .lightbox .video-wrapper iframe { width: 100%; height: 100%; border: 0; border-radius: 12px; }
+    .lightbox .nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.18);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      font-size: 1.6rem;
+      transition: background 0.2s, transform 0.2s;
+      z-index: 2100;
+    }
+    .lightbox .nav-btn:hover { background: rgba(255,255,255,0.16); transform: translateY(-50%) scale(1.05); }
+    .lightbox .nav-btn.prev { left: 20px; }
+    .lightbox .nav-btn.next { right: 20px; }
+    .lightbox .caption {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #fff;
+      text-align: center;
+      max-width: 90%;
+      font-size: 1rem;
+      letter-spacing: 0.03em;
+      opacity: 0.95;
+    }
+    .lightbox .close-btn {
+      top: 24px;
+      right: 24px;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.22);
+      display: grid;
+      place-items: center;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .lightbox .close-btn:hover { background: rgba(255,255,255,0.2); transform: scale(1.05); }
+
+    /* Coming Soon Modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 3000;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal-content {
+      background: var(--surface);
+      padding: 40px;
+      border-radius: 12px;
+      text-align: center;
+      max-width: 500px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.7);
+      border: 1px solid var(--border);
+    }
+    .modal-content h3 { color: var(--accent); margin-top: 0; font-size: 1.8em; }
+    .modal-content p { color: var(--text); line-height: 1.6; margin: 16px 0; }
+    .modal-close-btn {
+      margin-top: 24px;
+      padding: 12px 28px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1em;
+      transition: background 0.3s;
+    }
+    .modal-close-btn:hover { background: var(--accent2); }
 
     /* Forms & Inputs */
     .form-container { max-width: 700px; margin: auto; background: #111; padding: 30px; border-radius: 10px; border: 1px solid #222; }
-    input, textarea, select { width: 100%; padding: 12px; border-radius: 5px; border: 1px solid #333; background: #0a0a0a; color: #fff; box-sizing: border-box; margin-bottom: 15px; font-family: inherit; }
+    input, textarea, select { width: 100%; padding: 12px; border-radius: 5px; border: 1px solid #333; background: #0a0a0a; color: #fff; box-sizing: border-box; margin-bottom: 15px; font-family: i[...]
     
-    .btn { display: inline-block; padding: 12px 25px; background: #00b5ad; color: #fff; text-decoration: none; border-radius: 5px; border: none; cursor: pointer; transition: background 0.3s; font-size: 1em; width: 100%; }
+    .btn { display: inline-block; padding: 12px 25px; background: #00b5ad; color: #fff; text-decoration: none; border-radius: 5px; border: none; cursor: pointer; transition: background 0.3s; font[...]
     .btn:hover { background: #008c82; }
+
+    body.light-mode .card { background: #fff; border-color: #ddd; }
+    body.light-mode .form-container { background: #fff; border-color: #ddd; }
+    body.light-mode input,
+    body.light-mode textarea,
+    body.light-mode select { background: #fff; color: #111; border-color: #ccc; }
+    body.light-mode footer { background: #f1f4f8; color: #555; border-top-color: #ddd; }
+    body.light-mode .social-icons a { color: #111; }
+    body.light-mode nav { background: #fff; }
+    body.light-mode nav a,
+    body.light-mode nav button.theme-toggle { color: #111; }
 
     /* Socials */
     .social-icons { margin-top: 20px; text-align: center; }
@@ -73,7 +314,7 @@
 
     /* Floating Chat Feature */
     .chat-widget { position: fixed; bottom: 30px; right: 30px; z-index: 2000; }
-    .chat-btn { background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.4); text-decoration: none; transition: transform 0.3s; }
+    .chat-btn { background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 4px 1[...]
     .chat-btn:hover { transform: scale(1.1); }
 
     footer { text-align: center; padding: 40px; background: #111; color: #777; border-top: 1px solid #222; }
@@ -82,22 +323,9 @@
     @keyframes fadeInUp { from {opacity:0; transform:translateY(50px);} to {opacity:1; transform:translateY(0);} }
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 </head>
 <body>
-    <header>
-        <img src="/path/to/logo.png" alt="Logo" />
-    </header>
-    <section class="hero" style="background-image: url('/path/to/background.jpg');">
-        <h1>Welcome to Davince | Visuals</h1>
-    </section>
-    <section class="gallery">
-        <img src="/path/to/portfolio1.jpg" alt="Portfolio Image 1" />
-        <img src="/path/to/portfolio2.jpg" alt="Portfolio Image 2" />
-        <img src="/path/to/portfolio3.jpg" alt="Portfolio Image 3" />
-    </section>
-    <section class="software-store">
-        <img src="/path/to/vision-editor.png" alt="Vision Editor" />
-    </section>
 
   <div class="chat-widget">
     <a href="https://wa.me/256774231123" class="chat-btn" target="_blank" title="Chat with us">
@@ -112,8 +340,9 @@
     <a href="#gallery">Portfolio</a>
     <a href="#booking">Book Now</a>
     <a href="#contact">Contact</a>
-    <a href="#" onclick="alert('Login Triggered')">Login</a>
-    <a href="#" onclick="alert('Sign Up Triggered')">Sign Up</a>
+    <a href="#" onclick="showComingSoonModal(event)">Login</a>
+    <a href="#" onclick="showComingSoonModal(event)">Sign Up</a>
+    <button id="themeToggle" class="theme-toggle" type="button">Light Mode</button>
   </nav>
 
   <header>
@@ -125,7 +354,7 @@
 
   <section id="about">
     <h2>About</h2>
-    <p>Davince Visuals is a creative powerhouse specializing in high-end photography, digital art, and cinematic storytelling. Beyond the lens, we bridge the gap between art and technology by providing expert IT services and specialized software solutions.</p>
+    <p>Davince Visuals is a creative powerhouse specializing in high-end photography, digital art, and cinematic storytelling. Beyond the lens, we bridge the gap between art and technology by pro[...]
   </section>
 
   <section id="services">
@@ -150,124 +379,127 @@
   </section>
 
   <section id="store">
-  <h2>Software Store</h2>
-  <div class="grid">
+    <h2>Software Store</h2>
+    <div class="grid">
 
-    <!-- Item 1 -->
-    <div class="card">
-      <img src="images/creative-suite-pro.jpg" alt="Creative Suite Pro Thumbnail">
-      <h3>Creative Suite Pro</h3>
-      <p>Professional-grade creative software for design and editing.</p>
-      <div class="price">$49.99 / UGX 180,000</div>
-
-      <!-- PayPal -->
-      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-  <input type="hidden" name="cmd" value="_xclick">
-  <input type="hidden" name="business" value="davincevisuals@gmail.com">
-  <input type="hidden" name="item_name" value="Creative Suite Pro">
-  <input type="hidden" name="amount" value="49.99">
-  <input type="hidden" name="currency_code" value="USD">
-  <button type="submit" style="background:none; border:none; cursor:pointer;">
-    <img src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" 
-         alt="Pay with PayPal" 
-         style="width:180px; border-radius:6px;">
-  </button>
-</form>
-
-<!-- Secure Payment Badge -->
-<div style="text-align:center; margin-top:10px;">
-  <img src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_111x69.jpg" 
-       alt="Secure PayPal Payment" 
-       style="width:120px; opacity:0.9;">
-  <p style="font-size:0.8em; color:#aaa; margin-top:5px;">Secure Checkout with PayPal</p>
-</div>
-
-
-
-      <!-- UGX -->
-      <div style="margin-top:15px;">
-        <a href="tel:*165#" class="btn" style="background:#ff6600;">Pay with MTN Mobile Money</a>
+      <div class="card store-card">
+        <img src="vision-editor.png" alt="Creative Suite Pro">
+        <h3>Creative Suite Pro</h3>
+        <p>Creative software for fast photo editing, compositing, and content export.</p>
+        <div class="price">$49.99 / UGX 180,000</div>
+        <ul class="feature-list">
+          <li>Layer-based editing with AI retouch</li>
+          <li>Export presets for web and social</li>
+          <li>Cloud-ready asset library</li>
+        </ul>
+        <div class="store-actions">
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+            <input type="hidden" name="cmd" value="_xclick">
+            <input type="hidden" name="business" value="davincevisuals@gmail.com">
+            <input type="hidden" name="item_name" value="Creative Suite Pro">
+            <input type="hidden" name="amount" value="49.99">
+            <input type="hidden" name="currency_code" value="USD">
+            <button class="btn" type="submit">Buy with PayPal</button>
+          </form>
+        </div>
       </div>
-      <p style="font-size:0.5em; color:#aaa; text-align:center;">
-      </p>
-    </div>
 
-    <!-- Item 2 -->
-    <div class="card">
-      <img src="images/advanced-tools.jpg" alt="Advanced Tools Thumbnail">
-      <h3>Advanced Tools for Digital Artists</h3>
-      <p>Specialized software suite tailored for illustrators and concept artists.</p>
-      <div class="price">$59.99 / UGX 220,000</div>
-
-      <!-- PayPal -->
-      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-  <input type="hidden" name="cmd" value="_xclick">
-  <input type="hidden" name="business" value="davincevisuals@gmail.com">
-  <input type="hidden" name="item_name" value="Advance Tools for Digital Artists">
-  <input type="hidden" name="amount" value="29.99">
-  <input type="hidden" name="currency_code" value="USD">
-  <button type="submit" style="background:none; border:none; cursor:pointer;">
-    <img src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" 
-         alt="Pay with PayPal" 
-         style="width:180px; border-radius:6px;">
-  </button>
-</form>
-
-
-      <!-- UGX -->
-      <div style="margin-top:15px;">
-        <a href="tel:*165#" class="btn" style="background:#ff6600;">Pay with Airtel Money</a>
+      <div class="card store-card">
+        <img src="portfolio1.jpg" alt="Advanced Tools Thumbnail">
+        <h3>Advanced Tools for Digital Artists</h3>
+        <p>Powerful design tools built for illustrators, concept artists, and visual creators.</p>
+        <div class="price">$59.99 / UGX 220,000</div>
+        <ul class="feature-list">
+          <li>Vector and raster workflow support</li>
+          <li>Brush engine with advanced presets</li>
+          <li>Export-ready creative templates</li>
+        </ul>
+        <div class="store-actions">
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+            <input type="hidden" name="cmd" value="_xclick">
+            <input type="hidden" name="business" value="davincevisuals@gmail.com">
+            <input type="hidden" name="item_name" value="Advanced Tools for Digital Artists">
+            <input type="hidden" name="amount" value="29.99">
+            <input type="hidden" name="currency_code" value="USD">
+            <button class="btn" type="submit">Buy with PayPal</button>
+          </form>
+        </div>
       </div>
-      <p style="font: size 0.5em;em; color:#aaa; text-align:center;">
-      </p>
+
+      <div class="card store-card">
+        <img src="vision-editor.png" alt="Vision Editor" style="width:100%; border-radius:8px; margin-bottom:15px;">
+        <h3>Vision Editor</h3>
+        <p>Lightweight video editing for creators who need speed and polished output.</p>
+        <div class="price">$29.99 / UGX 110,000</div>
+        <ul class="feature-list">
+          <li>Fast timeline trimming and export</li>
+          <li>Mobile-friendly sharing presets</li>
+          <li>Optimized for on-the-go creativity</li>
+        </ul>
+        <div class="store-actions">
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+            <input type="hidden" name="cmd" value="_xclick">
+            <input type="hidden" name="business" value="davincevisuals@gmail.com">
+            <input type="hidden" name="item_name" value="Vision Editor">
+            <input type="hidden" name="amount" value="29.99">
+            <input type="hidden" name="currency_code" value="USD">
+            <button class="btn" type="submit">Buy with PayPal</button>
+          </form>
+        </div>
+      </div>
     </div>
+  </section>
 
-      <!-- Item 3 -->
-    <div class="card">
-  <img src="vision-editor.png" alt="Vision Editor Thumbnail" style="width:100%; border-radius:8px; margin-bottom:15px;">
-  <h3>Vision Editor</h3>
-  <p>Fast, lightweight video editing software for creators on the go.</p>
-  <div class="price">$29.99 / UGX 110,000</div>
+  <section id="testimonials">
+    <h2>What our clients say</h2>
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p>"Creative Suite Pro transformed our workflow. The editing tools are fast, intuitive, and the exports look flawless every time."</p>
+        <div class="testimonial-author">— Amina N., Creative Director</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p>"Vision Editor helped us complete a campaign ahead of schedule. The interface is clean and the performance is perfect for on-the-go editing."</p>
+        <div class="testimonial-author">— Kevin M., Content Lead</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p>"The software previews made it easy to choose the right package. Support was quick and the final result felt premium."</p>
+        <div class="testimonial-author">— Sarah L., Brand Manager</div>
+      </div>
+    </div>
+  </section>
 
-  <!-- PayPal -->
-  <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-  <input type="hidden" name="cmd" value="_xclick">
-  <input type="hidden" name="business" value="davincevisuals@gmail.com">
-  <input type="hidden" name="item_name" value="Vision Editor">
-  <input type="hidden" name="amount" value="29.99">
-  <input type="hidden" name="currency_code" value="USD">
-  <button type="submit" style="background:none; border:none; cursor:pointer;">
-    <img src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" 
-         alt="Pay with PayPal" 
-         style="width:180px; border-radius:6px;">
-  </button>
-</form>
-
-
-  <!-- UGX -->
-  <div style="margin-top:15px;">
-    <a href="tel:*165#" class="btn" style="background:#ff6600;">Pay with MTN Mobile Money</a>
-  </div>
-  <p style="font-size:0.9em; color:#aaa; text-align:center;">
-    Dial *165# → Payments → Enter Merchant Code: 789012 → Amount: UGX 110,000
-  </p>
-</div>
-</section>
-
-
-<section id="gallery">
+  <section id="gallery">
     <h2>Portfolio</h2>
     <div class="gallery">
-      <img src="portfolio1.jpg" alt="Action Image 1">
-      <img src="portfolio2.jpg" alt="Action Image 2">
-      <img src="portfolio3.jpg" alt="Action Image 3">
-      <img src="portfolio4.jpg" alt="Action Image 4">
-      <img src="portfolio5.jpg" alt="Action Image 5">
+      <picture>
+        <source srcset="portfolio1.webp" type="image/webp">
+        <img src="portfolio1.jpg" alt="Action Image 1" loading="lazy">
+      </picture>
+      <picture>
+        <source srcset="portfolio2.webp" type="image/webp">
+        <img src="portfolio2.jpg" alt="Action Image 2" loading="lazy">
+      </picture>
+      <picture>
+        <source srcset="portfolio3.webp" type="image/webp">
+        <img src="portfolio3.jpg" alt="Action Image 3" loading="lazy">
+      </picture>
+      <picture>
+        <source srcset="portfolio4.webp" type="image/webp">
+        <img src="portfolio4.jpg" alt="Action Image 4" loading="lazy">
+      </picture>
+      <picture>
+        <source srcset="portfolio5.webp" type="image/webp">
+        <img src="portfolio5.jpg" alt="Action Image 5" loading="lazy">
+      </picture>
 
       <div class="video-container">
+        <div class="video-trigger" data-video-src="https://www.youtube.com/embed/nXhlK43KvS0?si=h9IKDD7CdLsbpXAy&amp;autoplay=1" aria-label="Open video in lightbox"></div>
         <iframe  
-        src="https://www.youtube.com/embed/nXhlK43KvS0?si=h9IKDD7CdLsbpXAy&amp" 
-        title="YouTube video player" 
+        src="https://www.youtube.com/embed/nXhlK43KvS0?si=h9IKDD7CdLsbpXAy&amp;" 
+        title="YouTube video preview" 
         frameborder="0" 
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         referrerpolicy="strict-origin-when-cross-origin"
@@ -277,7 +509,63 @@
 
 
 
+      </div>
+    </div>
 
+    <div class="modal-overlay" id="comingSoonModal">
+    <div class="modal-content">
+      <h3>Coming Soon</h3>
+      <p>User authentication features are being prepared. We'll notify you when they're ready.</p>
+      <button class="modal-close-btn" onclick="closeComingSoonModal()">Got it</button>
+    </div>
+  </div>
+
+  <div class="lightbox" id="lightbox">
+      <button class="close-btn" id="lightboxClose" aria-label="Close lightbox">×</button>
+      <button class="nav-btn prev" id="lightboxPrev" aria-label="Previous item">‹</button>
+      <button class="nav-btn next" id="lightboxNext" aria-label="Next item">›</button>
+      <img src="" alt="Expanded portfolio image" id="lightboxImage">
+      <div class="video-wrapper" id="lightboxVideoWrapper">
+        <iframe id="lightboxVideo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+      <div class="caption" id="lightboxCaption"></div>
+    </div>
+  </section>
+
+  <section id="before-after" class="fade-in-up">
+    <h2>Before & After</h2>
+    <div class="before-after-wrap">
+      <div class="compare-block">
+        <div class="compare-labels"><span>Before</span><span>After</span></div>
+        <div class="compare-slider" data-sample="1">
+          <picture>
+            <source srcset="portfolio1.webp" type="image/webp">
+            <img src="portfolio1.jpg" alt="Before edit example">
+          </picture>
+          <div class="after-image">
+            <picture>
+              <source srcset="portfolio2.webp" type="image/webp">
+              <img src="portfolio2.jpg" alt="After edit example">
+            </picture>
+          </div>
+          <div class="slider-handle" aria-label="Drag to compare"></div>
+        </div>
+      </div>
+      <div class="compare-block">
+        <div class="compare-labels"><span>Before</span><span>After</span></div>
+        <div class="compare-slider" data-sample="2">
+          <picture>
+            <source srcset="portfolio3.webp" type="image/webp">
+            <img src="portfolio3.jpg" alt="Before art retouch">
+          </picture>
+          <div class="after-image">
+            <picture>
+              <source srcset="portfolio4.webp" type="image/webp">
+              <img src="portfolio4.jpg" alt="After art retouch">
+            </picture>
+          </div>
+          <div class="slider-handle" aria-label="Drag to compare"></div>
+        </div>
       </div>
     </div>
   </section>
@@ -299,8 +587,18 @@
           <option value="it">IT Support / Tech Consultation</option>
           <option value="other">Digital Art Commission</option>
         </select>
-        <label style="display:block; margin-bottom:8px; color:#aaa; font-size:0.9em;">Preferred Date</label>
-        <input type="date" required>
+        <label for="bookingDate" style="display:block; margin:18px 0 8px; color:#aaa; font-size:0.9em;">Preferred Date</label>
+        <input id="bookingDate" type="text" placeholder="Select a date" required readonly>
+        <label for="bookingTime" style="display:block; margin:18px 0 8px; color:#aaa; font-size:0.9em;">Preferred Time</label>
+        <select id="bookingTime" required>
+          <option value="">-- Select a Time Window --</option>
+          <option value="morning">Morning (9am–12pm)</option>
+          <option value="afternoon">Afternoon (1pm–4pm)</option>
+          <option value="evening">Evening (5pm–8pm)</option>
+        </select>
+        <div class="calendar-note" style="color:#ccc; margin:18px 0 10px; font-size:0.95em;">
+          Pick a date and time window. We'll confirm exact availability immediately.
+        </div>
         <textarea placeholder="Tell us more about your project..." rows="4"></textarea>
         <button type="submit" class="btn">Confirm Booking Request</button>
       </form>
@@ -311,7 +609,7 @@
   <h2>Find Us</h2>
   <div style="text-align:center; margin-top:20px;">
     <iframe 
-      src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d249.21808877310932!2d32.14597125808326!3d1.9577517262114124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2s!5e0!3m2!1sen!2sug!4v1775947926029!5m2!1sen!2sug" 
+      src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d249.21808877310932!2d32.14597125808326!3d1.9577517262114124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2s!5e0!3m2!1sen!2sug!4[...]
       width="50%" 
       height="225" 
       style="border:0; border-radius:10px;" 
@@ -342,5 +640,182 @@
     <p>&copy; 2026 Davince Visuals. All rights reserved. <br> Powered by Art & Technology.</p>
   </footer>
 
+  <script>
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const lightboxVideoWrapper = document.getElementById('lightboxVideoWrapper');
+    const lightboxVideo = document.getElementById('lightboxVideo');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+    const closeButton = document.getElementById('lightboxClose');
+    const prevButton = document.getElementById('lightboxPrev');
+    const nextButton = document.getElementById('lightboxNext');
+
+    const galleryImages = Array.from(document.querySelectorAll('.gallery picture img'));
+    const videoTrigger = document.querySelector('.video-trigger');
+    const lightboxItems = galleryImages.map((img) => ({
+      type: 'image',
+      src: img.src,
+      alt: img.alt || 'Portfolio image',
+    }));
+
+    if (videoTrigger) {
+      lightboxItems.push({
+        type: 'video',
+        src: videoTrigger.dataset.videoSrc,
+        alt: 'Portfolio video',
+      });
+    }
+
+    let currentItemIndex = 0;
+
+    const showLightboxItem = (index) => {
+      currentItemIndex = (index + lightboxItems.length) % lightboxItems.length;
+      const item = lightboxItems[currentItemIndex];
+      if (item.type === 'image') {
+        lightboxImage.src = item.src;
+        lightboxImage.style.display = 'block';
+        lightboxVideoWrapper.classList.remove('active');
+        lightboxVideo.src = '';
+      } else {
+        lightboxImage.style.display = 'none';
+        lightboxVideoWrapper.classList.add('active');
+        lightboxVideo.src = item.src;
+      }
+      lightboxCaption.textContent = item.alt;
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    };
+
+    document.querySelectorAll('.gallery picture img').forEach((img, index) => {
+      img.addEventListener('click', () => {
+        showLightboxItem(index);
+      });
+    });
+
+    if (videoTrigger) {
+      videoTrigger.addEventListener('click', () => {
+        showLightboxItem(lightboxItems.length - 1);
+      });
+    }
+
+    const closeLightbox = () => {
+      lightbox.classList.remove('active');
+      lightboxVideo.src = '';
+      document.body.style.overflow = '';
+    };
+
+    prevButton.addEventListener('click', () => showLightboxItem(currentItemIndex - 1));
+    nextButton.addEventListener('click', () => showLightboxItem(currentItemIndex + 1));
+    closeButton.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (event) => {
+      if (event.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (!lightbox.classList.contains('active')) return;
+      if (event.key === 'Escape') {
+        closeLightbox();
+      } else if (event.key === 'ArrowLeft') {
+        showLightboxItem(currentItemIndex - 1);
+      } else if (event.key === 'ArrowRight') {
+        showLightboxItem(currentItemIndex + 1);
+      }
+    });
+
+    const showComingSoonModal = (event) => {
+      event.preventDefault();
+      document.getElementById('comingSoonModal').classList.add('active');
+    };
+
+    const closeComingSoonModal = () => {
+      document.getElementById('comingSoonModal').classList.remove('active');
+    };
+
+    document.getElementById('comingSoonModal').addEventListener('click', (event) => {
+      if (event.target.id === 'comingSoonModal') closeComingSoonModal();
+    });
+
+    const themeToggle = document.getElementById('themeToggle');
+    const savedTheme = localStorage.getItem('davince-theme');
+    const applyTheme = (isLight) => {
+      document.body.classList.toggle('light-mode', isLight);
+      themeToggle.textContent = isLight ? '🌙 Dark Mode' : '☀ Light Mode';
+      localStorage.setItem('davince-theme', isLight ? 'light' : 'dark');
+    };
+
+    if (savedTheme === 'light') {
+      applyTheme(true);
+    }
+
+    themeToggle.addEventListener('click', () => {
+      applyTheme(!document.body.classList.contains('light-mode'));
+    });
+
+    const initCompareSlider = (slider) => {
+      const afterImageEl = slider.querySelector('.after-image');
+      const handle = slider.querySelector('.slider-handle');
+      let dragging = false;
+
+      const updateCompare = (clientX) => {
+        const bounds = slider.getBoundingClientRect();
+        let offset = clientX - bounds.left;
+        offset = Math.max(0, Math.min(offset, bounds.width));
+        const percent = (offset / bounds.width) * 100;
+        afterImageEl.style.width = `${percent}%`;
+        handle.style.left = `${percent}%`;
+      };
+
+      const startDrag = () => { dragging = true; };
+      const stopDrag = () => { dragging = false; };
+
+      handle.addEventListener('mousedown', startDrag);
+      window.addEventListener('mouseup', stopDrag);
+      window.addEventListener('mousemove', (event) => {
+        if (dragging) updateCompare(event.clientX);
+      });
+
+      slider.addEventListener('click', (event) => {
+        updateCompare(event.clientX);
+      });
+
+      slider.addEventListener('touchstart', (event) => {
+        dragging = true;
+        updateCompare(event.touches[0].clientX);
+      }, { passive: true });
+      slider.addEventListener('touchmove', (event) => {
+        if (dragging) updateCompare(event.touches[0].clientX);
+      }, { passive: true });
+      slider.addEventListener('touchend', stopDrag);
+
+      // initialize at 50%
+      updateCompare(slider.getBoundingClientRect().left + slider.getBoundingClientRect().width / 2);
+    };
+
+    document.querySelectorAll('.compare-slider').forEach(initCompareSlider);
+
+    const fadeElements = document.querySelectorAll('.fade-in-up');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    fadeElements.forEach((el) => observer.observe(el));
+
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script>
+    flatpickr('#bookingDate', {
+      minDate: 'today',
+      dateFormat: 'F j, Y',
+      altInput: true,
+      altFormat: 'F j, Y',
+      defaultDate: 'today',
+      locale: {
+        firstDayOfWeek: 1
+      }
+    });
+  </script>
 </body>
 </html>
