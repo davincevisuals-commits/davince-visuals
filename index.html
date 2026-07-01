@@ -3,9 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-  <meta name="description" content="Professional photography, cinematic film production, and digital art services in Uganda. Expert IT solutions and creative software tools. Davince Visuals deliver[..[...]
+  <meta name="author" content="Davince Visuals">
+  <meta name="robots" content="index, follow">
+  <meta name="description" content="Professional photography, cinematic film production, and digital art services in Uganda. Expert IT solutions and creative software tools. Davince Visuals delivers premium creative services.">
   <meta name="keywords" content="Digital Artist Uganda, Professional Photography, Film Production, IT Solutions, Creative Services, Cinematic Storytelling">
+  
+  <!-- Open Graph Tags -->
+  <meta property="og:title" content="Davince Visuals | Professional Photography, Film Production & Digital Art">
+  <meta property="og:description" content="Premium creative services: Photography, Film Production, Digital Art, and IT Solutions in Uganda">
+  <meta property="og:type" content="business.business">
+  <meta property="og:url" content="https://davincevisuals.com">
+  <meta property="og:image" content="davince-logo.png">
+  
   <title>Davince Visuals | Professional Photography, Film Production & Digital Art in Uganda</title>
+  
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Davince Visuals",
+    "image": "davince-logo.png",
+    "description": "Professional photography, film production, digital art, and IT solutions",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Kampala",
+      "addressCountry": "Uganda"
+    },
+    "telephone": "+256774231123",
+    "email": "davincevisuals@gmail.com",
+    "sameAs": [
+      "https://tiktok.com/@davincevisuals",
+      "https://youtube.com/@davincevisuals8191"
+    ]
+  }
+  </script>
+
   <style>
     :root {
       --nav-height: 64px;
@@ -20,12 +53,19 @@
       --input-border: #333;
     }
 
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: 'Helvetica Neue', sans-serif;
       margin: 0;
       padding: 0;
       color: var(--text);
-      scroll-behavior: smooth;
       background: var(--bg);
     }
 
@@ -41,6 +81,23 @@
       --input-border: #ccc;
     }
 
+    /* Skip to Content Link */
+    .skip-to-content {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--accent);
+      color: #fff;
+      padding: 8px 16px;
+      text-decoration: none;
+      z-index: 100;
+      border-radius: 0 0 6px 0;
+    }
+
+    .skip-to-content:focus {
+      top: 0;
+    }
+
     /* Header & Navigation */
     header {
       position: relative;
@@ -52,7 +109,9 @@
       text-align: center;
       background: url("background.jpg") no-repeat center top;
       background-size: cover;
+      background-attachment: fixed;
     }
+
     header::before {
       content: "";
       position: absolute;
@@ -60,13 +119,79 @@
       background: rgba(0,0,0,0.6);
       pointer-events: none;
     }
-    header img.logo { width: 180px; margin-bottom: 20px; z-index: 1; }
-    header h1 { font-size: 3.5em; margin: 0; color: #00b5ad; animation: fadeInDown 2s; z-index: 1; }
-    header p { font-size: 1.3em; color: #ff6600; animation: fadeInUp 2s; z-index: 1; }
+
+    header img.logo { 
+      width: 180px; 
+      margin-bottom: 20px; 
+      z-index: 1; 
+    }
+
+    header h1 { 
+      font-size: 3.5em; 
+      margin: 0; 
+      color: #00b5ad; 
+      animation: fadeInDown 2s; 
+      z-index: 1; 
+    }
+
+    header p { 
+      font-size: 1.3em; 
+      color: #ff6600; 
+      animation: fadeInUp 2s; 
+      z-index: 1; 
+    }
     
-    nav { position: fixed; top: 0; width: 100%; background: var(--surface); padding: 15px; text-align: center; z-index: 1000; }
-    nav a, nav button.theme-toggle { margin: 0 12px; color: var(--text); text-decoration: none; font-weight: bold; transition: color 0.3s, background 0.3s, transform 0.3s ease; font-size: 0.9em; }
-    nav a:hover, nav button.theme-toggle:hover { color: var(--accent); transform: translateY(-1px); }
+    nav { 
+      position: fixed; 
+      top: 0; 
+      width: 100%; 
+      background: var(--surface); 
+      padding: 15px 20px; 
+      text-align: center; 
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .nav-brand {
+      font-weight: bold;
+      color: var(--accent);
+      font-size: 1.1em;
+      margin-right: auto;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    nav a, nav button.theme-toggle { 
+      margin: 0 8px;
+      color: var(--text); 
+      text-decoration: none; 
+      font-weight: bold; 
+      transition: color 0.3s ease, background 0.3s ease, transform 0.3s ease; 
+      font-size: 0.9em;
+      padding: 8px 12px;
+      border-radius: 4px;
+    }
+
+    nav a:focus, nav button.theme-toggle:focus {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    nav a:hover, nav button.theme-toggle:hover { 
+      color: var(--accent); 
+      transform: translateY(-1px);
+      background: rgba(0, 181, 173, 0.1);
+    }
+
     nav button.theme-toggle {
       border: 1px solid rgba(255,255,255,0.18);
       background: rgba(255,255,255,0.08);
@@ -89,8 +214,31 @@
       box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05);
     }
 
+    /* Mobile Menu Toggle */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 1.5em;
+      cursor: pointer;
+      padding: 8px 12px;
+      z-index: 1001;
+    }
+
+    .menu-toggle:focus {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
     /* Layout Sections */
-    section { padding: 80px 20px; max-width: 1100px; margin: auto; scroll-margin-top: calc(var(--nav-height) + 16px); }
+    section { 
+      padding: 80px 20px; 
+      max-width: 1100px; 
+      margin: auto; 
+      scroll-margin-top: calc(var(--nav-height) + 16px); 
+    }
+
     section h2 {
       font-size: 2.1em;
       margin: 0 0 20px 0;
@@ -105,37 +253,203 @@
     }
     
     /* Grid Systems */
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-    .card { background: #1a1a1a; padding: 25px; border-radius: 10px; border: 1px solid #333; text-align: center; transition: 0.3s ease; }
-    .card:hover { border-color: #00b5ad; transform: translateY(-5px); }
-    .card h3 { color: #00b5ad; margin-top: 0; }
-    .price { font-size: 1.5em; color: #ff6600; font-weight: bold; margin: 15px 0; }
-    .feature-list { list-style: none; padding: 0; margin: 15px 0 0; color: #ccc; font-size: 0.95em; }
-    .feature-list li { margin-bottom: 10px; padding-left: 22px; position: relative; }
-    .feature-list li::before { content: '✓'; position: absolute; left: 0; color: var(--accent); }
-    .store-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
-    .store-actions .btn, .store-actions button { flex: 1 1 160px; width: auto; }
-    .store-actions form { margin: 0; }
-    .store-card img { border-radius: 10px; margin-bottom: 18px; }
-    .preview-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-top: 30px; }
-    .preview-card, .testimonial-card { background: #111; border: 1px solid #222; border-radius: 14px; padding: 24px; }
-    .preview-card h3, .testimonial-card h3 { margin-top: 0; color: #00b5ad; }
-    .video-box { border-radius: 12px; overflow: hidden; margin: 18px 0; background: #000; }
-    .video-box iframe { width: 100%; height: 200px; border: 0; }
-    .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; margin-top: 24px; }
-    .testimonial-card p { color: #ddd; line-height: 1.7; }
-    .testimonial-stars { color: #ffb400; margin-bottom: 12px; }
-    .testimonial-author { margin-top: 16px; color: #aaa; font-size: 0.95em; }
-    body.light-mode .preview-card, body.light-mode .testimonial-card { background: #fff; border-color: #ddd; }
-    body.light-mode .testimonial-card p { color: #333; }
+    .grid { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+      gap: 30px; 
+    }
+
+    .card { 
+      background: #1a1a1a; 
+      padding: 25px; 
+      border-radius: 10px; 
+      border: 1px solid #333; 
+      text-align: center; 
+      transition: 0.3s ease;
+    }
+
+    .card:hover { 
+      border-color: #00b5ad; 
+      transform: translateY(-5px); 
+    }
+
+    .card:focus-within {
+      outline: 2px solid var(--accent);
+      outline-offset: -2px;
+    }
+
+    .card h3 { 
+      color: #00b5ad; 
+      margin-top: 0; 
+    }
+
+    .price { 
+      font-size: 1.5em; 
+      color: #ff6600; 
+      font-weight: bold; 
+      margin: 15px 0; 
+    }
+
+    .feature-list { 
+      list-style: none; 
+      padding: 0; 
+      margin: 15px 0 0; 
+      color: #ccc; 
+      font-size: 0.95em; 
+    }
+
+    .feature-list li { 
+      margin-bottom: 10px; 
+      padding-left: 22px; 
+      position: relative; 
+    }
+
+    .feature-list li::before { 
+      content: '✓'; 
+      position: absolute; 
+      left: 0; 
+      color: var(--accent); 
+    }
+
+    .store-actions { 
+      display: flex; 
+      flex-wrap: wrap; 
+      gap: 12px; 
+      margin-top: 20px; 
+    }
+
+    .store-actions .btn, 
+    .store-actions button { 
+      flex: 1 1 160px; 
+      width: auto; 
+    }
+
+    .store-actions form { 
+      margin: 0; 
+      flex: 1 1 160px;
+    }
+
+    .store-card img { 
+      border-radius: 10px; 
+      margin-bottom: 18px; 
+      width: 100%;
+      max-height: 200px;
+      object-fit: cover;
+    }
+
+    .preview-grid { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+      gap: 24px; 
+      margin-top: 30px; 
+    }
+
+    .preview-card, 
+    .testimonial-card { 
+      background: #111; 
+      border: 1px solid #222; 
+      border-radius: 14px; 
+      padding: 24px; 
+    }
+
+    .preview-card h3, 
+    .testimonial-card h3 { 
+      margin-top: 0; 
+      color: #00b5ad; 
+    }
+
+    .video-box { 
+      border-radius: 12px; 
+      overflow: hidden; 
+      margin: 18px 0; 
+      background: #000; 
+    }
+
+    .video-box iframe { 
+      width: 100%; 
+      height: 200px; 
+      border: 0; 
+    }
+
+    .testimonial-grid { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+      gap: 22px; 
+      margin-top: 24px; 
+    }
+
+    .testimonial-card p { 
+      color: #ddd; 
+      line-height: 1.7; 
+    }
+
+    .testimonial-stars { 
+      color: #ffb400; 
+      margin-bottom: 12px; 
+      font-size: 1.2em;
+    }
+
+    .testimonial-author { 
+      margin-top: 16px; 
+      color: #aaa; 
+      font-size: 0.95em; 
+    }
+
+    body.light-mode .preview-card, 
+    body.light-mode .testimonial-card { 
+      background: #fff; 
+      border-color: #ddd; 
+    }
+
+    body.light-mode .testimonial-card p { 
+      color: #333; 
+    }
 
     /* Gallery */
-    .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-    .gallery img, .gallery video { width: 100%; border-radius: 8px; cursor: zoom-in; transition: transform 0.3s ease; }
-    .gallery img:hover, .gallery video:hover { transform: scale(1.03); }
+    .gallery { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+      gap: 20px; 
+    }
 
-    .video-container { position: relative; }
-    .video-container iframe { width: 100%; height: 100%; min-height: 240px; border-radius: 8px; pointer-events: none; }
+    .gallery img, 
+    .gallery video { 
+      width: 100%; 
+      border-radius: 8px; 
+      cursor: zoom-in; 
+      transition: transform 0.3s ease;
+      height: auto;
+    }
+
+    .gallery img:hover, 
+    .gallery video:hover { 
+      transform: scale(1.03); 
+    }
+
+    .gallery img:focus,
+    .gallery video:focus {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    .video-container { 
+      position: relative; 
+      width: 100%;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+    }
+
+    .video-container iframe { 
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%; 
+      height: 100%;
+      border-radius: 8px; 
+      pointer-events: none; 
+    }
+
     .video-trigger {
       position: absolute;
       inset: 0;
@@ -146,28 +460,97 @@
       border-radius: 8px;
       transition: background 0.2s ease;
       z-index: 2;
-    }
-    .video-trigger:hover { background: rgba(0, 0, 0, 0.35); }
-    .video-trigger::before {
-      content: '▶';
-      color: #fff;
+      border: none;
       font-size: 3rem;
+      color: #fff;
       text-shadow: 0 0 18px rgba(0,0,0,0.7);
-      letter-spacing: 0.05em;
     }
 
-    .before-after-wrap { max-width: 1000px; margin: 40px auto 0; }
-    .compare-block { margin-bottom: 32px; }
-    .compare-labels { display: flex; justify-content: space-between; color: var(--muted); margin-bottom: 14px; font-size: 0.95rem; }
-    .compare-slider { position: relative; overflow: hidden; border-radius: 14px; }
-    .compare-slider img { display: block; width: 100%; height: auto; }
-    .fade-in-up { opacity: 0; transform: translateY(30px); transition: opacity 0.9s ease, transform 0.9s ease; }
-    .fade-in-up.visible { opacity: 1; transform: translateY(0); }
-    .after-image { position: absolute; top: 0; left: 0; width: 50%; height: 100%; overflow: hidden; }
-    .after-image img { display: block; width: 100%; height: auto; }
-    .slider-handle { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 4px; height: 100%; background: rgba(255,255,255,0.9); cursor: ew-resize; z-index: 2; box-shadow: 0 0 10px rgba(255,255,255,0.3); transition: box-shadow 0.2s ease; }
-    .slider-handle:hover { background: rgba(255,255,255,1); box-shadow: 0 0 18px rgba(255,255,255,0.6); }
-    .slider-handle::before { content: '';
+    .video-trigger:hover { 
+      background: rgba(0, 0, 0, 0.35); 
+    }
+
+    .video-trigger:focus {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    .before-after-wrap { 
+      max-width: 1000px; 
+      margin: 40px auto 0; 
+    }
+
+    .compare-block { 
+      margin-bottom: 32px; 
+    }
+
+    .compare-labels { 
+      display: flex; 
+      justify-content: space-between; 
+      color: var(--muted); 
+      margin-bottom: 14px; 
+      font-size: 0.95rem; 
+    }
+
+    .compare-slider { 
+      position: relative; 
+      overflow: hidden; 
+      border-radius: 14px; 
+    }
+
+    .compare-slider img { 
+      display: block; 
+      width: 100%; 
+      height: auto; 
+    }
+
+    .fade-in-up { 
+      opacity: 0; 
+      transform: translateY(30px); 
+      transition: opacity 0.9s ease, transform 0.9s ease; 
+    }
+
+    .fade-in-up.visible { 
+      opacity: 1; 
+      transform: translateY(0); 
+    }
+
+    .after-image { 
+      position: absolute; 
+      top: 0; 
+      left: 0; 
+      width: 50%; 
+      height: 100%; 
+      overflow: hidden; 
+    }
+
+    .after-image img { 
+      display: block; 
+      width: 100%; 
+      height: auto; 
+    }
+
+    .slider-handle { 
+      position: absolute; 
+      top: 0; 
+      left: 50%; 
+      transform: translateX(-50%); 
+      width: 4px; 
+      height: 100%; 
+      background: rgba(255,255,255,0.9); 
+      cursor: ew-resize; 
+      z-index: 2; 
+      box-shadow: 0 0 10px rgba(255,255,255,0.3); 
+      transition: box-shadow 0.2s ease; 
+    }
+
+    .slider-handle:hover { 
+      background: rgba(255,255,255,1); 
+      box-shadow: 0 0 18px rgba(255,255,255,0.6); 
+    }
+
+    .slider-handle::before { 
+      content: '';
       position: absolute;
       top: 50%;
       left: 50%;
@@ -179,7 +562,10 @@
       border-radius: 50%;
       transition: box-shadow 0.25s ease;
     }
-    .slider-handle:hover::before { box-shadow: 0 0 18px rgba(255,255,255,0.5); }
+
+    .slider-handle:hover::before { 
+      box-shadow: 0 0 18px rgba(255,255,255,0.5); 
+    }
 
     .light-mode .before-after-wrap .compare-labels,
     .light-mode .before-after-wrap .slider-handle,
@@ -200,11 +586,36 @@
       z-index: 2000;
       overflow: hidden;
     }
-    .lightbox.active { display: flex; }
-    .lightbox img, .lightbox .video-wrapper { max-width: 100%; max-height: 100%; border-radius: 12px; box-shadow: 0 30px 80px rgba(0,0,0,0.7); }
-    .lightbox .video-wrapper { display: none; width: 100%; height: 100%; }
-    .lightbox .video-wrapper.active { display: block; }
-    .lightbox .video-wrapper iframe { width: 100%; height: 100%; border: 0; border-radius: 12px; }
+
+    .lightbox.active { 
+      display: flex; 
+    }
+
+    .lightbox img, 
+    .lightbox .video-wrapper { 
+      max-width: 100%; 
+      max-height: 100%; 
+      border-radius: 12px; 
+      box-shadow: 0 30px 80px rgba(0,0,0,0.7); 
+    }
+
+    .lightbox .video-wrapper { 
+      display: none; 
+      width: 100%; 
+      height: 100%; 
+    }
+
+    .lightbox .video-wrapper.active { 
+      display: block; 
+    }
+
+    .lightbox .video-wrapper iframe { 
+      width: 100%; 
+      height: 100%; 
+      border: 0; 
+      border-radius: 12px; 
+    }
+
     .lightbox .nav-btn {
       position: absolute;
       top: 50%;
@@ -222,9 +633,25 @@
       transition: background 0.2s ease, transform 0.2s ease;
       z-index: 2100;
     }
-    .lightbox .nav-btn:hover { background: rgba(255,255,255,0.16); transform: translateY(-50%) scale(1.05); }
-    .lightbox .nav-btn.prev { left: 20px; }
-    .lightbox .nav-btn.next { right: 20px; }
+
+    .lightbox .nav-btn:hover { 
+      background: rgba(255,255,255,0.16); 
+      transform: translateY(-50%) scale(1.05); 
+    }
+
+    .lightbox .nav-btn:focus {
+      outline: 2px solid #fff;
+      outline-offset: 2px;
+    }
+
+    .lightbox .nav-btn.prev { 
+      left: 20px; 
+    }
+
+    .lightbox .nav-btn.next { 
+      right: 20px; 
+    }
+
     .lightbox .caption {
       position: absolute;
       bottom: 30px;
@@ -237,7 +664,9 @@
       letter-spacing: 0.03em;
       opacity: 0.95;
     }
+
     .lightbox .close-btn {
+      position: absolute;
       top: 24px;
       right: 24px;
       width: 42px;
@@ -252,7 +681,16 @@
       cursor: pointer;
       transition: background 0.2s ease, transform 0.2s ease;
     }
-    .lightbox .close-btn:hover { background: rgba(255,255,255,0.2); transform: scale(1.05); }
+
+    .lightbox .close-btn:hover { 
+      background: rgba(255,255,255,0.2); 
+      transform: scale(1.05); 
+    }
+
+    .lightbox .close-btn:focus {
+      outline: 2px solid #fff;
+      outline-offset: 2px;
+    }
 
     /* Coming Soon Modal */
     .modal-overlay {
@@ -264,7 +702,11 @@
       justify-content: center;
       z-index: 3000;
     }
-    .modal-overlay.active { display: flex; }
+
+    .modal-overlay.active { 
+      display: flex; 
+    }
+
     .modal-content {
       background: var(--surface);
       padding: 40px;
@@ -274,8 +716,19 @@
       box-shadow: 0 30px 80px rgba(0,0,0,0.7);
       border: 1px solid var(--border);
     }
-    .modal-content h3 { color: var(--accent); margin-top: 0; font-size: 1.8em; }
-    .modal-content p { color: var(--text); line-height: 1.6; margin: 16px 0; }
+
+    .modal-content h3 { 
+      color: var(--accent); 
+      margin-top: 0; 
+      font-size: 1.8em; 
+    }
+
+    .modal-content p { 
+      color: var(--text); 
+      line-height: 1.6; 
+      margin: 16px 0; 
+    }
+
     .modal-close-btn {
       margin-top: 24px;
       padding: 12px 28px;
@@ -286,358 +739,827 @@
       cursor: pointer;
       font-size: 1em;
       transition: background 0.3s ease;
+      font-weight: bold;
     }
-    .modal-close-btn:hover { background: var(--accent2); }
+
+    .modal-close-btn:hover { 
+      background: var(--accent2); 
+    }
+
+    .modal-close-btn:focus {
+      outline: 2px solid var(--accent2);
+      outline-offset: 2px;
+    }
 
     /* Forms & Inputs */
-    .form-container { max-width: 700px; margin: auto; background: #111; padding: 30px; border-radius: 10px; border: 1px solid #222; }
-    input, textarea, select { width: 100%; padding: 12px; border-radius: 5px; border: 1px solid #333; background: #0a0a0a; color: #fff; box-sizing: border-box; margin-bottom: 15px; font-family: inherit; }
-    
-    .btn { display: inline-block; padding: 12px 25px; background: #00b5ad; color: #fff; text-decoration: none; border-radius: 5px; border: none; cursor: pointer; transition: background 0.3s ease; font-weight: bold; }
-    .btn:hover { background: #008c82; }
+    .form-container { 
+      max-width: 700px; 
+      margin: auto; 
+      background: #111; 
+      padding: 30px; 
+      border-radius: 10px; 
+      border: 1px solid #222; 
+    }
 
-    body.light-mode .card { background: #fff; border-color: #ddd; }
-    body.light-mode .form-container { background: #fff; border-color: #ddd; }
+    input, 
+    textarea, 
+    select { 
+      width: 100%; 
+      padding: 12px; 
+      border-radius: 5px; 
+      border: 1px solid #333; 
+      background: #0a0a0a; 
+      color: #fff; 
+      box-sizing: border-box; 
+      margin-bottom: 15px; 
+      font-family: inherit;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(0, 181, 173, 0.1);
+    }
+
+    textarea {
+      resize: vertical;
+      font-family: inherit;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: #aaa;
+      font-size: 0.9em;
+      font-weight: 500;
+    }
+
+    .form-message {
+      padding: 12px 16px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      display: none;
+      font-weight: 500;
+    }
+
+    .form-message.success {
+      background: #10b981;
+      color: #fff;
+      display: block;
+    }
+
+    .form-message.error {
+      background: #ef4444;
+      color: #fff;
+      display: block;
+    }
+
+    .btn { 
+      display: inline-block; 
+      padding: 12px 25px; 
+      background: #00b5ad; 
+      color: #fff; 
+      text-decoration: none; 
+      border-radius: 5px; 
+      border: none; 
+      cursor: pointer; 
+      transition: background 0.3s ease, transform 0.2s ease; 
+      font-weight: bold;
+    }
+
+    .btn:hover { 
+      background: #008c82;
+      transform: translateY(-2px);
+    }
+
+    .btn:focus {
+      outline: 2px solid var(--accent2);
+      outline-offset: 2px;
+    }
+
+    body.light-mode .card { 
+      background: #fff; 
+      border-color: #ddd; 
+    }
+
+    body.light-mode .form-container { 
+      background: #fff; 
+      border-color: #ddd; 
+    }
+
     body.light-mode input,
     body.light-mode textarea,
-    body.light-mode select { background: #fff; color: #111; border-color: #ccc; }
-    body.light-mode footer { background: #f1f4f8; color: #555; border-top-color: #ddd; }
-    body.light-mode .social-icons a { color: #111; }
-    body.light-mode nav { background: #fff; }
+    body.light-mode select { 
+      background: #fff; 
+      color: #111; 
+      border-color: #ccc; 
+    }
+
+    body.light-mode footer { 
+      background: #f1f4f8; 
+      color: #555; 
+      border-top-color: #ddd; 
+    }
+
+    body.light-mode .social-icons a { 
+      color: #111; 
+    }
+
+    body.light-mode nav { 
+      background: #fff; 
+    }
+
     body.light-mode nav a,
-    body.light-mode nav button.theme-toggle { color: #111; }
+    body.light-mode nav button.theme-toggle { 
+      color: #111; 
+    }
 
     /* Socials */
-    .social-icons { margin-top: 20px; text-align: center; }
-    .social-icons a { margin: 0 15px; color: #fff; font-size: 2em; text-decoration: none; transition: color 0.3s ease, transform 0.3s ease; }
-    .social-icons a:hover { color: #ff6600; transform: translateY(-2px); }
+    .social-icons { 
+      margin-top: 20px; 
+      text-align: center; 
+    }
+
+    .social-icons a { 
+      margin: 0 15px; 
+      color: #fff; 
+      font-size: 2em; 
+      text-decoration: none; 
+      transition: color 0.3s ease, transform 0.3s ease;
+      display: inline-block;
+    }
+
+    .social-icons a:hover { 
+      color: #ff6600; 
+      transform: translateY(-3px);
+    }
+
+    .social-icons a:focus {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
 
     /* Floating Chat Feature */
-    .chat-widget { position: fixed; bottom: 30px; right: 30px; z-index: 2000; }
-    .chat-btn { background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 4px 12px rgba(37,211,102,0.4); transition: transform 0.3s ease, box-shadow 0.3s ease; text-decoration: none; }
-    .chat-btn:hover { transform: scale(1.08); box-shadow: 0 6px 20px rgba(37,211,102,0.6); }
+    .chat-widget { 
+      position: fixed; 
+      bottom: 30px; 
+      right: 30px; 
+      z-index: 2000; 
+    }
 
-    footer { text-align: center; padding: 40px; background: #111; color: #777; border-top: 1px solid #222; }
+    .chat-btn { 
+      background: #25d366; 
+      color: white; 
+      width: 60px; 
+      height: 60px; 
+      border-radius: 50%; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      font-size: 30px; 
+      box-shadow: 0 4px 12px rgba(37,211,102,0.4); 
+      transition: transform 0.3s ease, box-shadow 0.3s ease; 
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+    }
 
-    @keyframes fadeInDown { from {opacity:0; transform:translateY(-50px);} to {opacity:1; transform:translateY(0);} }
-    @keyframes fadeInUp { from {opacity:0; transform:translateY(50px);} to {opacity:1; transform:translateY(0);} }
+    .chat-btn:hover { 
+      transform: scale(1.08); 
+      box-shadow: 0 6px 20px rgba(37,211,102,0.6); 
+    }
+
+    .chat-btn:focus {
+      outline: 2px solid #fff;
+      outline-offset: 2px;
+    }
+
+    /* Breadcrumb Navigation */
+    .breadcrumb {
+      background: var(--surface);
+      padding: 12px 20px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      font-size: 0.9em;
+    }
+
+    .breadcrumb a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .breadcrumb a:hover {
+      color: var(--accent2);
+      text-decoration: underline;
+    }
+
+    /* Scroll to Top Button */
+    .scroll-to-top {
+      position: fixed;
+      bottom: 100px;
+      right: 30px;
+      background: var(--accent);
+      color: #fff;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 1999;
+      transition: transform 0.3s ease, background 0.3s ease;
+      border: none;
+      font-size: 1.5em;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .scroll-to-top:hover {
+      background: var(--accent2);
+      transform: translateY(-3px);
+    }
+
+    .scroll-to-top.show {
+      display: flex;
+    }
+
+    footer { 
+      text-align: center; 
+      padding: 40px; 
+      background: #111; 
+      color: #777; 
+      border-top: 1px solid #222; 
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      nav {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .nav-brand {
+        width: 100%;
+        text-align: left;
+        margin-right: 0;
+        margin-bottom: 10px;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: center;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+      }
+
+      .nav-links.active {
+        max-height: 400px;
+      }
+
+      header h1 { 
+        font-size: 2.5em; 
+      }
+
+      header p { 
+        font-size: 1em; 
+      }
+
+      section { 
+        padding: 60px 15px; 
+      }
+
+      section h2 {
+        font-size: 1.8em;
+      }
+
+      .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .store-actions {
+        flex-direction: column;
+      }
+
+      .store-actions .btn,
+      .store-actions button,
+      .store-actions form {
+        flex: 1 1 100%;
+      }
+
+      #map iframe {
+        width: 100% !important;
+      }
+
+      .lightbox .nav-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.3rem;
+      }
+
+      .lightbox .nav-btn.prev {
+        left: 10px;
+      }
+
+      .lightbox .nav-btn.next {
+        right: 10px;
+      }
+
+      .chat-widget {
+        bottom: 20px;
+        right: 20px;
+      }
+
+      .chat-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+      }
+
+      .scroll-to-top {
+        bottom: 80px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header h1 { 
+        font-size: 2em; 
+      }
+
+      header p { 
+        font-size: 0.9em; 
+      }
+
+      header img.logo {
+        width: 120px;
+      }
+
+      nav a, nav button.theme-toggle {
+        font-size: 0.8em;
+        margin: 4px 6px;
+        padding: 6px 10px;
+      }
+
+      section { 
+        padding: 40px 15px; 
+      }
+
+      section h2 {
+        font-size: 1.5em;
+      }
+
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .testimonial-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-container {
+        padding: 20px;
+      }
+
+      .lightbox {
+        padding: 10px;
+      }
+
+      .lightbox img,
+      .lightbox .video-wrapper {
+        border-radius: 8px;
+      }
+
+      footer {
+        padding: 30px 15px;
+        font-size: 0.9em;
+      }
+    }
+
+    @keyframes fadeInDown { 
+      from {opacity:0; transform:translateY(-50px);} 
+      to {opacity:1; transform:translateY(0);} 
+    }
+
+    @keyframes fadeInUp { 
+      from {opacity:0; transform:translateY(50px);} 
+      to {opacity:1; transform:translateY(0);} 
+    }
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 </head>
 <body>
+  <a href="#main-content" class="skip-to-content">Skip to main content</a>
 
   <div class="chat-widget">
-    <a href="https://wa.me/256774231123" class="chat-btn" target="_blank" title="Chat with us">
+    <a href="https://wa.me/256774231123" class="chat-btn" target="_blank" rel="noopener noreferrer" title="Chat with us on WhatsApp" aria-label="WhatsApp Chat">
       <i class="fab fa-whatsapp"></i>
     </a>
   </div>
 
-  <nav>
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#store">Store</a>
-    <a href="#gallery">Portfolio</a>
-    <a href="#booking">Book Now</a>
-    <a href="#contact">Contact</a>
-    <a href="#" onclick="showComingSoonModal(event)">Login</a>
-    <a href="#" onclick="showComingSoonModal(event)">Sign Up</a>
-    <button id="themeToggle" class="theme-toggle" type="button">Light Mode</button>
+  <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top"></button>
+
+  <nav role="navigation" aria-label="Main Navigation">
+    <div class="nav-brand">Davince Visuals</div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#store">Store</a>
+      <a href="#gallery">Portfolio</a>
+      <a href="#booking">Book Now</a>
+      <a href="#contact">Contact</a>
+      <a href="#" onclick="showComingSoonModal(event)">Login</a>
+      <a href="#" onclick="showComingSoonModal(event)">Sign Up</a>
+      <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle light/dark mode">Light Mode</button>
+    </div>
   </nav>
 
-  <header>
+  <header role="banner">
     <img src="davince-logo.png" alt="Davince Visuals Logo" class="logo">
     <h1>Davince Visuals</h1>
     <p>Photography • Digital Art • Film • IT Solutions</p>
     <a href="#booking" class="btn" style="width:auto; margin-top:20px;">Book a Session</a>
   </header>
 
-  <section id="about">
-    <h2>About</h2>
-    <p>Davince Visuals is a creative powerhouse specializing in high-end photography, digital art, and cinematic storytelling. Beyond the lens, we bridge the gap between art and technology by providing expert IT solutions alongside our creative services.</p>
-  </section>
+  <main id="main-content">
+    <section id="about">
+      <h2>About</h2>
+      <p>Davince Visuals is a creative powerhouse specializing in high-end photography, digital art, and cinematic storytelling. Beyond the lens, we bridge the gap between art and technology by providing expert IT solutions alongside our creative services. Based in Uganda, we serve clients locally and internationally with premium creative and technical expertise.</p>
+    </section>
 
-  <section id="services">
-    <h2>Our Services</h2>
-    <div class="grid">
-      <div class="card">
-        <i class="fas fa-camera fa-2x" style="color:#00b5ad"></i>
-        <h3>Photography</h3>
-        <p>Professional wedding, portrait, and commercial shoots tailored to your vision.</p>
+    <section id="services">
+      <h2>Our Services</h2>
+      <div class="grid">
+        <div class="card">
+          <i class="fas fa-camera fa-2x" style="color:#00b5ad"></i>
+          <h3>Photography</h3>
+          <p>Professional wedding, portrait, and commercial shoots tailored to your vision. We capture moments that matter.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-video fa-2x" style="color:#00b5ad"></i>
+          <h3>Film Production</h3>
+          <p>Cinematic storytelling, editing, and color grading for events and brands. Transform your vision into compelling visuals.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-laptop-code fa-2x" style="color:#00b5ad"></i>
+          <h3>IT Solutions</h3>
+          <p>Technical support, web development, and digital security consulting. We empower your digital presence.</p>
+        </div>
       </div>
-      <div class="card">
-        <i class="fas fa-video fa-2x" style="color:#00b5ad"></i>
-        <h3>Film Production</h3>
-        <p>Cinematic storytelling, editing, and color grading for events and brands.</p>
-      </div>
-      <div class="card">
-        <i class="fas fa-laptop-code fa-2x" style="color:#00b5ad"></i>
-        <h3>IT Solutions</h3>
-        <p>Technical support, web development, and digital security consulting.</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="store">
-    <h2>Software Store</h2>
-    <div class="grid">
+    <section id="store">
+      <h2>Software Store</h2>
+      <div class="grid">
+        <div class="card store-card">
+          <img src="vision-editor.png" alt="Creative Suite Pro software interface" loading="lazy">
+          <h3>Creative Suite Pro</h3>
+          <p>Creative software for fast photo editing, compositing, and content export.</p>
+          <div class="price">$49.99 / UGX 180,000</div>
+          <ul class="feature-list">
+            <li>Layer-based editing with AI retouch</li>
+            <li>Export presets for web and social</li>
+            <li>Cloud-ready asset library</li>
+          </ul>
+          <div class="store-actions">
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" rel="noopener noreferrer">
+              <input type="hidden" name="cmd" value="_xclick">
+              <input type="hidden" name="business" value="davincevisuals@gmail.com">
+              <input type="hidden" name="item_name" value="Creative Suite Pro">
+              <input type="hidden" name="amount" value="49.99">
+              <input type="hidden" name="currency_code" value="USD">
+              <button class="btn" type="submit">Buy with PayPal</button>
+            </form>
+          </div>
+        </div>
 
-      <div class="card store-card">
-        <img src="vision-editor.png" alt="Creative Suite Pro">
-        <h3>Creative Suite Pro</h3>
-        <p>Creative software for fast photo editing, compositing, and content export.</p>
-        <div class="price">$49.99 / UGX 180,000</div>
-        <ul class="feature-list">
-          <li>Layer-based editing with AI retouch</li>
-          <li>Export presets for web and social</li>
-          <li>Cloud-ready asset library</li>
-        </ul>
-        <div class="store-actions">
-          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-            <input type="hidden" name="cmd" value="_xclick">
-            <input type="hidden" name="business" value="davincevisuals@gmail.com">
-            <input type="hidden" name="item_name" value="Creative Suite Pro">
-            <input type="hidden" name="amount" value="49.99">
-            <input type="hidden" name="currency_code" value="USD">
-            <button class="btn" type="submit">Buy with PayPal</button>
-          </form>
+        <div class="card store-card">
+          <img src="portfolio1.jpg" alt="Advanced Tools for Digital Artists" loading="lazy">
+          <h3>Advanced Tools for Digital Artists</h3>
+          <p>Powerful design tools built for illustrators, concept artists, and visual creators.</p>
+          <div class="price">$59.99 / UGX 220,000</div>
+          <ul class="feature-list">
+            <li>Vector and raster workflow support</li>
+            <li>Brush engine with advanced presets</li>
+            <li>Export-ready creative templates</li>
+          </ul>
+          <div class="store-actions">
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" rel="noopener noreferrer">
+              <input type="hidden" name="cmd" value="_xclick">
+              <input type="hidden" name="business" value="davincevisuals@gmail.com">
+              <input type="hidden" name="item_name" value="Advanced Tools for Digital Artists">
+              <input type="hidden" name="amount" value="59.99">
+              <input type="hidden" name="currency_code" value="USD">
+              <button class="btn" type="submit">Buy with PayPal</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="card store-card">
+          <img src="vision-editor.png" alt="Vision Editor video editing software" loading="lazy">
+          <h3>Vision Editor</h3>
+          <p>Lightweight video editing for creators who need speed and polished output.</p>
+          <div class="price">$29.99 / UGX 110,000</div>
+          <ul class="feature-list">
+            <li>Fast timeline trimming and export</li>
+            <li>Mobile-friendly sharing presets</li>
+            <li>Optimized for on-the-go creativity</li>
+          </ul>
+          <div class="store-actions">
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" rel="noopener noreferrer">
+              <input type="hidden" name="cmd" value="_xclick">
+              <input type="hidden" name="business" value="davincevisuals@gmail.com">
+              <input type="hidden" name="item_name" value="Vision Editor">
+              <input type="hidden" name="amount" value="29.99">
+              <input type="hidden" name="currency_code" value="USD">
+              <button class="btn" type="submit">Buy with PayPal</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials">
+      <h2>What Our Clients Say</h2>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <p>"Creative Suite Pro transformed our workflow. The editing tools are fast, intuitive, and the exports look flawless every time."</p>
+          <div class="testimonial-author">— Amina N., Creative Director</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <p>"Vision Editor helped us complete a campaign ahead of schedule. The interface is clean and the performance is perfect for on-the-go editing."</p>
+          <div class="testimonial-author">— Kevin M., Content Lead</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <p>"The software previews made it easy to choose the right package. Support was quick and the final result felt premium."</p>
+          <div class="testimonial-author">— Sarah L., Brand Manager</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <h2>Portfolio</h2>
+      <div class="gallery" role="region" aria-label="Portfolio Gallery">
+        <picture>
+          <source srcset="portfolio1.webp" type="image/webp">
+          <img src="portfolio1.jpg" alt="Professional photography portfolio - Action shot 1" loading="lazy">
+        </picture>
+        <picture>
+          <source srcset="portfolio2.webp" type="image/webp">
+          <img src="portfolio2.jpg" alt="Professional photography portfolio - Action shot 2" loading="lazy">
+        </picture>
+        <picture>
+          <source srcset="portfolio3.webp" type="image/webp">
+          <img src="portfolio3.jpg" alt="Professional photography portfolio - Action shot 3" loading="lazy">
+        </picture>
+        <picture>
+          <source srcset="portfolio4.webp" type="image/webp">
+          <img src="portfolio4.jpg" alt="Professional photography portfolio - Action shot 4" loading="lazy">
+        </picture>
+        <picture>
+          <source srcset="portfolio5.webp" type="image/webp">
+          <img src="portfolio5.jpg" alt="Professional photography portfolio - Action shot 5" loading="lazy">
+        </picture>
+
+        <div class="video-container">
+          <button class="video-trigger" id="videoTrigger" data-video-src="https://www.youtube.com/embed/nXhlK43KvS0?si=h9IKDD7CdLsbpXAy&amp;autoplay=1" aria-label="Play featured video">▶</button>
+          <iframe  
+            src="https://www.youtube.com/embed/nXhlK43KvS0?si=h9IKDD7CdLsbpXAy&amp;" 
+            title="Davince Visuals - Featured video content" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+            loading="lazy">
+          </iframe>
         </div>
       </div>
 
-      <div class="card store-card">
-        <img src="portfolio1.jpg" alt="Advanced Tools Thumbnail">
-        <h3>Advanced Tools for Digital Artists</h3>
-        <p>Powerful design tools built for illustrators, concept artists, and visual creators.</p>
-        <div class="price">$59.99 / UGX 220,000</div>
-        <ul class="feature-list">
-          <li>Vector and raster workflow support</li>
-          <li>Brush engine with advanced presets</li>
-          <li>Export-ready creative templates</li>
-        </ul>
-        <div class="store-actions">
-          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-            <input type="hidden" name="cmd" value="_xclick">
-            <input type="hidden" name="business" value="davincevisuals@gmail.com">
-            <input type="hidden" name="item_name" value="Advanced Tools for Digital Artists">
-            <input type="hidden" name="amount" value="29.99">
-            <input type="hidden" name="currency_code" value="USD">
-            <button class="btn" type="submit">Buy with PayPal</button>
-          </form>
+      <div class="modal-overlay" id="comingSoonModal" role="dialog" aria-labelledby="comingSoonTitle" aria-hidden="true">
+        <div class="modal-content">
+          <h3 id="comingSoonTitle">Coming Soon</h3>
+          <p>User authentication features are being prepared. We'll notify you when they're ready.</p>
+          <button class="modal-close-btn" onclick="closeComingSoonModal()">Got it</button>
         </div>
       </div>
 
-      <div class="card store-card">
-        <img src="vision-editor.png" alt="Vision Editor" style="width:100%; border-radius:8px; margin-bottom:15px;">
-        <h3>Vision Editor</h3>
-        <p>Lightweight video editing for creators who need speed and polished output.</p>
-        <div class="price">$29.99 / UGX 110,000</div>
-        <ul class="feature-list">
-          <li>Fast timeline trimming and export</li>
-          <li>Mobile-friendly sharing presets</li>
-          <li>Optimized for on-the-go creativity</li>
-        </ul>
-        <div class="store-actions">
-          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-            <input type="hidden" name="cmd" value="_xclick">
-            <input type="hidden" name="business" value="davincevisuals@gmail.com">
-            <input type="hidden" name="item_name" value="Vision Editor">
-            <input type="hidden" name="amount" value="29.99">
-            <input type="hidden" name="currency_code" value="USD">
-            <button class="btn" type="submit">Buy with PayPal</button>
-          </form>
+      <div class="lightbox" id="lightbox" role="dialog" aria-hidden="true" aria-label="Image lightbox viewer">
+        <button class="close-btn" id="lightboxClose" aria-label="Close lightbox">×</button>
+        <button class="nav-btn prev" id="lightboxPrev" aria-label="Previous item">‹</button>
+        <button class="nav-btn next" id="lightboxNext" aria-label="Next item">›</button>
+        <img src="" alt="" id="lightboxImage">
+        <div class="video-wrapper" id="lightboxVideoWrapper">
+          <iframe id="lightboxVideo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+        <div class="caption" id="lightboxCaption"></div>
+      </div>
+    </section>
+
+    <section id="before-after" class="fade-in-up">
+      <h2>Before & After</h2>
+      <div class="before-after-wrap">
+        <div class="compare-block">
+          <div class="compare-labels"><span>Before</span><span>After</span></div>
+          <div class="compare-slider" data-sample="1">
+            <picture>
+              <source srcset="portfolio1.webp" type="image/webp">
+              <img src="portfolio1.jpg" alt="Before photo editing">
+            </picture>
+            <div class="after-image">
+              <picture>
+                <source srcset="portfolio2.webp" type="image/webp">
+                <img src="portfolio2.jpg" alt="After photo editing">
+              </picture>
+            </div>
+            <div class="slider-handle" aria-label="Drag to compare before and after"></div>
+          </div>
+        </div>
+        <div class="compare-block">
+          <div class="compare-labels"><span>Before</span><span>After</span></div>
+          <div class="compare-slider" data-sample="2">
+            <picture>
+              <source srcset="portfolio3.webp" type="image/webp">
+              <img src="portfolio3.jpg" alt="Before art retouch">
+            </picture>
+            <div class="after-image">
+              <picture>
+                <source srcset="portfolio4.webp" type="image/webp">
+                <img src="portfolio4.jpg" alt="After art retouch">
+              </picture>
+            </div>
+            <div class="slider-handle" aria-label="Drag to compare before and after"></div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="testimonials">
-    <h2>What our clients say</h2>
-    <div class="testimonial-grid">
-      <div class="testimonial-card">
-        <div class="testimonial-stars">★★★★★</div>
-        <p>"Creative Suite Pro transformed our workflow. The editing tools are fast, intuitive, and the exports look flawless every time."</p>
-        <div class="testimonial-author">— Amina N., Creative Director</div>
+    <section id="booking">
+      <h2>Book a Session</h2>
+      <div class="form-container">
+        <div class="form-message" id="formMessage"></div>
+        <form id="bookingForm" novalidate>
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px;">
+            <div>
+              <label for="firstName">First Name</label>
+              <input type="text" id="firstName" placeholder="First Name" required>
+            </div>
+            <div>
+              <label for="lastName">Last Name</label>
+              <input type="text" id="lastName" placeholder="Last Name" required>
+            </div>
+          </div>
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="Your Email Address" required>
+          <label for="service">Select Service</label>
+          <select id="service" required>
+            <option value="">-- Choose a Service --</option>
+            <option value="photography">Photography Session</option>
+            <option value="film">Film / Video Production</option>
+            <option value="it">IT Support / Tech Consultation</option>
+            <option value="digital-art">Digital Art Commission</option>
+          </select>
+          <label for="bookingDate">Preferred Date</label>
+          <input id="bookingDate" type="text" placeholder="Select a date" required readonly>
+          <label for="bookingTime">Preferred Time</label>
+          <select id="bookingTime" required>
+            <option value="">-- Select a Time Window --</option>
+            <option value="morning">Morning (9am–12pm)</option>
+            <option value="afternoon">Afternoon (1pm–4pm)</option>
+            <option value="evening">Evening (5pm–8pm)</option>
+          </select>
+          <div class="calendar-note" style="color:#ccc; margin:18px 0 10px; font-size:0.95em;">
+            Pick a date and time window. We'll confirm exact availability immediately.
+          </div>
+          <label for="message">Project Details</label>
+          <textarea id="message" placeholder="Tell us more about your project..." rows="4"></textarea>
+          <button type="submit" class="btn">Confirm Booking Request</button>
+        </form>
       </div>
-      <div class="testimonial-card">
-        <div class="testimonial-stars">★★★★★</div>
-        <p>"Vision Editor helped us complete a campaign ahead of schedule. The interface is clean and the performance is perfect for on-the-go editing."</p>
-        <div class="testimonial-author">— Kevin M., Content Lead</div>
-      </div>
-      <div class="testimonial-card">
-        <div class="testimonial-stars">★★★★★</div>
-        <p>"The software previews made it easy to choose the right package. Support was quick and the final result felt premium."</p>
-        <div class="testimonial-author">— Sarah L., Brand Manager</div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="gallery">
-    <h2>Portfolio</h2>
-    <div class="gallery">
-      <picture>
-        <source srcset="portfolio1.webp" type="image/webp">
-        <img src="portfolio1.jpg" alt="Action Image 1" loading="lazy">
-      </picture>
-      <picture>
-        <source srcset="portfolio2.webp" type="image/webp">
-        <img src="portfolio2.jpg" alt="Action Image 2" loading="lazy">
-      </picture>
-      <picture>
-        <source srcset="portfolio3.webp" type="image/webp">
-        <img src="portfolio3.jpg" alt="Action Image 3" loading="lazy">
-      </picture>
-      <picture>
-        <source srcset="portfolio4.webp" type="image/webp">
-        <img src="portfolio4.jpg" alt="Action Image 4" loading="lazy">
-      </picture>
-      <picture>
-        <source srcset="portfolio5.webp" type="image/webp">
-        <img src="portfolio5.jpg" alt="Action Image 5" loading="lazy">
-      </picture>
-
-      <div class="video-container">
-        <div class="video-trigger" data-video-src="https://www.youtube.com/embed/nXhlK43KvS0?si=h9IKDD7CdLsbpXAy&amp;autoplay=1" aria-label="Open video in lightbox"></div>
-        <iframe  
-        src="https://www.youtube.com/embed/nXhlK43KvS0?si=h9IKDD7CdLsbpXAy&amp;" 
-        title="YouTube video preview" 
-        frameborder="0" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin"
-         allowfullscreen
-        style="border-radius: 8px;">
+    <section id="map">
+      <h2>Find Us</h2>
+      <div style="text-align:center; margin-top:20px;">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d249.21808877310932!2d32.14597125808326!3d1.9577517262114124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2s!5e0!3m2!1sen!2sug!4DjW5aQUyLQUAA" 
+          style="border:0; border-radius:10px; width:100%; max-width:100%; height:300px;"
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Davince Visuals location on Google Maps">
         </iframe>
       </div>
-    </div>
+    </section>
 
-    <div class="modal-overlay" id="comingSoonModal">
-    <div class="modal-content">
-      <h3>Coming Soon</h3>
-      <p>User authentication features are being prepared. We'll notify you when they're ready.</p>
-      <button class="modal-close-btn" onclick="closeComingSoonModal()">Got it</button>
-    </div>
-  </div>
-
-  <div class="lightbox" id="lightbox">
-      <button class="close-btn" id="lightboxClose" aria-label="Close lightbox">×</button>
-      <button class="nav-btn prev" id="lightboxPrev" aria-label="Previous item">‹</button>
-      <button class="nav-btn next" id="lightboxNext" aria-label="Next item">›</button>
-      <img src="" alt="Expanded portfolio image" id="lightboxImage">
-      <div class="video-wrapper" id="lightboxVideoWrapper">
-        <iframe id="lightboxVideo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-      </div>
-      <div class="caption" id="lightboxCaption"></div>
-    </div>
-  </section>
-
-  <section id="before-after" class="fade-in-up">
-    <h2>Before & After</h2>
-    <div class="before-after-wrap">
-      <div class="compare-block">
-        <div class="compare-labels"><span>Before</span><span>After</span></div>
-        <div class="compare-slider" data-sample="1">
-          <picture>
-            <source srcset="portfolio1.webp" type="image/webp">
-            <img src="portfolio1.jpg" alt="Before edit example">
-          </picture>
-          <div class="after-image">
-            <picture>
-              <source srcset="portfolio2.webp" type="image/webp">
-              <img src="portfolio2.jpg" alt="After edit example">
-            </picture>
-          </div>
-          <div class="slider-handle" aria-label="Drag to compare"></div>
+    <section id="contact">
+      <h2>Contact</h2>
+      <p style="text-align:center;">
+        Phone: <a href="tel:+256774231123" style="color: var(--accent); text-decoration: none;">+256 774 231 123</a> | 
+        Email: <a href="mailto:davincevisuals@gmail.com" style="color: var(--accent); text-decoration: none;">davincevisuals@gmail.com</a>
+      </p>
+      
+      <div style="max-width: 700px; margin: 40px auto;">
+        <h3 style="text-align: center; color: var(--accent);">Get In Touch</h3>
+        <div class="form-container">
+          <div class="form-message" id="contactFormMessage"></div>
+          <form id="contactForm" novalidate>
+            <label for="contactName">Your Name</label>
+            <input type="text" id="contactName" placeholder="Your Name" required>
+            <label for="contactEmail">Your Email</label>
+            <input type="email" id="contactEmail" placeholder="Your Email" required>
+            <label for="contactSubject">Subject</label>
+            <input type="text" id="contactSubject" placeholder="Message Subject" required>
+            <label for="contactMessage">Message</label>
+            <textarea id="contactMessage" placeholder="Your message..." rows="5" required></textarea>
+            <button type="submit" class="btn">Send Message</button>
+          </form>
         </div>
       </div>
-      <div class="compare-block">
-        <div class="compare-labels"><span>Before</span><span>After</span></div>
-        <div class="compare-slider" data-sample="2">
-          <picture>
-            <source srcset="portfolio3.webp" type="image/webp">
-            <img src="portfolio3.jpg" alt="Before art retouch">
-          </picture>
-          <div class="after-image">
-            <picture>
-              <source srcset="portfolio4.webp" type="image/webp">
-              <img src="portfolio4.jpg" alt="After art retouch">
-            </picture>
-          </div>
-          <div class="slider-handle" aria-label="Drag to compare"></div>
-        </div>
+    </section>
+
+    <section id="social">
+      <h2 style="text-align: center;">Follow Us</h2>
+      <div class="social-icons">
+        <a href="https://facebook.com/davincevisuals" target="_blank" rel="noopener noreferrer" aria-label="Visit our Facebook page">
+          <i class="fab fa-facebook"></i>
+        </a>
+        <a href="https://tiktok.com/@davincevisuals" target="_blank" rel="noopener noreferrer" aria-label="Follow us on TikTok">
+          <i class="fab fa-tiktok"></i>
+        </a>
+        <a href="https://youtube.com/@davincevisuals8191" target="_blank" rel="noopener noreferrer" aria-label="Subscribe to our YouTube channel">
+          <i class="fab fa-youtube"></i>
+        </a>
+        <a href="https://linkedin.com/company/davince-visuals" target="_blank" rel="noopener noreferrer" aria-label="Visit our LinkedIn page">
+          <i class="fab fa-linkedin"></i>
+        </a>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <section id="booking">
-    <h2>Book a Session</h2>
-    <div class="form-container">
-      <form id="bookingForm">
-        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px;">
-          <input type="text" placeholder="First Name" required>
-          <input type="text" placeholder="Last Name" required>
-        </div>
-        <input type="email" placeholder="Your Email Address" required>
-        <label style="display:block; margin-bottom:8px; color:#aaa; font-size:0.9em;">Select Service</label>
-        <select required>
-          <option value="">-- Choose a Service --</option>
-          <option value="photography">Photography Session</option>
-          <option value="film">Film / Video Production</option>
-          <option value="it">IT Support / Tech Consultation</option>
-          <option value="other">Digital Art Commission</option>
-        </select>
-        <label for="bookingDate" style="display:block; margin:18px 0 8px; color:#aaa; font-size:0.9em;">Preferred Date</label>
-        <input id="bookingDate" type="text" placeholder="Select a date" required readonly>
-        <label for="bookingTime" style="display:block; margin:18px 0 8px; color:#aaa; font-size:0.9em;">Preferred Time</label>
-        <select id="bookingTime" required>
-          <option value="">-- Select a Time Window --</option>
-          <option value="morning">Morning (9am–12pm)</option>
-          <option value="afternoon">Afternoon (1pm–4pm)</option>
-          <option value="evening">Evening (5pm–8pm)</option>
-        </select>
-        <div class="calendar-note" style="color:#ccc; margin:18px 0 10px; font-size:0.95em;">
-          Pick a date and time window. We'll confirm exact availability immediately.
-        </div>
-        <textarea placeholder="Tell us more about your project..." rows="4"></textarea>
-        <button type="submit" class="btn">Confirm Booking Request</button>
-      </form>
-    </div>
-  </section>
-
-  <section id="map">
-  <h2>Find Us</h2>
-  <div style="text-align:center; margin-top:20px;">
-    <iframe 
-      src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d249.21808877310932!2d32.14597125808326!3d1.9577517262114124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2s!5e0!3m2!1sen!2sug!4[...]
-      width="50%" 
-      height="225" 
-      style="border:0; border-radius:10px;" 
-      allowfullscreen="" 
-      loading="lazy" 
-      referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
-  </div>
-</section>
-
-  <section id="contact">
-    <h2>Contact</h2>
-    <p style="text-align:center;">Phone: +256 774 231 123 | Email: Davincevisuals@gmail.com</p>
-
-  <section id="social">
-    <div class="social-icons">
-      <a href="#"><i class="fab fa-facebook"></i></a>
-         <a href="https://tiktok.com/@davincevisuals?_t=8q4NxS6LreA&_r=1&_t=ZS-95Sdl27f4mz" target="_blank">
-      <i class="fab fa-tiktok"></i>
-    </a>
-      <a href="https://youtube.com/@davincevisuals8191?si=sbKRHuc0pbsmM6ke" target="_blank">
-  <i class="fab fa-youtube"></i></a>
-      <a href="#"><i class="fab fa-linkedin"></i></a>
-    </div>
-  </section>
-
-  <footer>
+  <footer role="contentinfo">
     <p>&copy; 2026 Davince Visuals. All rights reserved. <br> Powered by Art & Technology.</p>
+    <p style="font-size: 0.9em; color: #666; margin-top: 15px;">
+      <a href="#" style="color: #aaa; text-decoration: none;">Privacy Policy</a> | 
+      <a href="#" style="color: #aaa; text-decoration: none;">Terms of Service</a>
+    </p>
   </footer>
 
   <script>
+    // Mobile Menu Toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    menuToggle.addEventListener('click', () => {
+      const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', !isExpanded);
+      navLinks.classList.toggle('active');
+    });
+
+    // Close mobile menu on link click
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        menuToggle.setAttribute('aria-expanded', 'false');
+        navLinks.classList.remove('active');
+      });
+    });
+
+    // Scroll to Top Button
+    const scrollToTop = document.getElementById('scrollToTop');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        scrollToTop.classList.add('show');
+      } else {
+        scrollToTop.classList.remove('show');
+      }
+    });
+
+    scrollToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Lightbox functionality
     const lightbox = document.getElementById('lightbox');
     const lightboxImage = document.getElementById('lightboxImage');
     const lightboxVideoWrapper = document.getElementById('lightboxVideoWrapper');
@@ -648,7 +1570,7 @@
     const nextButton = document.getElementById('lightboxNext');
 
     const galleryImages = Array.from(document.querySelectorAll('.gallery picture img'));
-    const videoTrigger = document.querySelector('.video-trigger');
+    const videoTrigger = document.getElementById('videoTrigger');
     const lightboxItems = galleryImages.map((img) => ({
       type: 'image',
       src: img.src,
@@ -680,13 +1602,22 @@
       }
       lightboxCaption.textContent = item.alt;
       lightbox.classList.add('active');
+      lightbox.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
     };
 
-    document.querySelectorAll('.gallery picture img').forEach((img, index) => {
+    galleryImages.forEach((img, index) => {
       img.addEventListener('click', () => {
         showLightboxItem(index);
       });
+      img.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          showLightboxItem(index);
+        }
+      });
+      img.setAttribute('tabindex', '0');
+      img.setAttribute('role', 'button');
     });
 
     if (videoTrigger) {
@@ -697,6 +1628,7 @@
 
     const closeLightbox = () => {
       lightbox.classList.remove('active');
+      lightbox.setAttribute('aria-hidden', 'true');
       lightboxVideo.src = '';
       document.body.style.overflow = '';
     };
@@ -718,19 +1650,23 @@
       }
     });
 
+    // Coming Soon Modal
     const showComingSoonModal = (event) => {
       event.preventDefault();
       document.getElementById('comingSoonModal').classList.add('active');
+      document.getElementById('comingSoonModal').setAttribute('aria-hidden', 'false');
     };
 
     const closeComingSoonModal = () => {
       document.getElementById('comingSoonModal').classList.remove('active');
+      document.getElementById('comingSoonModal').setAttribute('aria-hidden', 'true');
     };
 
     document.getElementById('comingSoonModal').addEventListener('click', (event) => {
       if (event.target.id === 'comingSoonModal') closeComingSoonModal();
     });
 
+    // Theme Toggle
     const themeToggle = document.getElementById('themeToggle');
     const savedTheme = localStorage.getItem('davince-theme');
     const applyTheme = (isLight) => {
@@ -747,6 +1683,7 @@
       applyTheme(!document.body.classList.contains('light-mode'));
     });
 
+    // Compare Slider
     const initCompareSlider = (slider) => {
       const afterImageEl = slider.querySelector('.after-image');
       const handle = slider.querySelector('.slider-handle');
@@ -783,12 +1720,12 @@
       }, { passive: true });
       slider.addEventListener('touchend', stopDrag);
 
-      // initialize at 50%
       updateCompare(slider.getBoundingClientRect().left + slider.getBoundingClientRect().width / 2);
     };
 
     document.querySelectorAll('.compare-slider').forEach(initCompareSlider);
 
+    // Fade In on Scroll
     const fadeElements = document.querySelectorAll('.fade-in-up');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -799,6 +1736,94 @@
       });
     }, { threshold: 0.15 });
     fadeElements.forEach((el) => observer.observe(el));
+
+    // Booking Form Submission
+    const bookingForm = document.getElementById('bookingForm');
+    const formMessage = document.getElementById('formMessage');
+
+    bookingForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const formData = new FormData(bookingForm);
+      const data = {
+        firstName: document.getElementById('firstName').value,
+        lastName: document.getElementById('lastName').value,
+        email: document.getElementById('email').value,
+        service: document.getElementById('service').value,
+        date: document.getElementById('bookingDate').value,
+        time: document.getElementById('bookingTime').value,
+        message: document.getElementById('message').value,
+      };
+
+      // Send to Formspree
+      fetch('https://formspree.io/f/YOUR_FORM_ID', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+      .then(response => {
+        if (response.ok) {
+          formMessage.textContent = 'Booking request sent successfully! We\'ll contact you soon.';
+          formMessage.classList.add('success');
+          formMessage.classList.remove('error');
+          bookingForm.reset();
+          setTimeout(() => {
+            formMessage.classList.remove('success');
+          }, 5000);
+        } else {
+          throw new Error('Form submission failed');
+        }
+      })
+      .catch(error => {
+        formMessage.textContent = 'Error sending booking. Please try again or contact us directly.';
+        formMessage.classList.add('error');
+        formMessage.classList.remove('success');
+      });
+    });
+
+    // Contact Form Submission
+    const contactForm = document.getElementById('contactForm');
+    const contactFormMessage = document.getElementById('contactFormMessage');
+
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const data = {
+        name: document.getElementById('contactName').value,
+        email: document.getElementById('contactEmail').value,
+        subject: document.getElementById('contactSubject').value,
+        message: document.getElementById('contactMessage').value,
+      };
+
+      // Send to Formspree
+      fetch('https://formspree.io/f/YOUR_CONTACT_FORM_ID', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+      .then(response => {
+        if (response.ok) {
+          contactFormMessage.textContent = 'Message sent successfully! We\'ll get back to you soon.';
+          contactFormMessage.classList.add('success');
+          contactFormMessage.classList.remove('error');
+          contactForm.reset();
+          setTimeout(() => {
+            contactFormMessage.classList.remove('success');
+          }, 5000);
+        } else {
+          throw new Error('Form submission failed');
+        }
+      })
+      .catch(error => {
+        contactFormMessage.textContent = 'Error sending message. Please try again.';
+        contactFormMessage.classList.add('error');
+        contactFormMessage.classList.remove('success');
+      });
+    });
 
   </script>
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
