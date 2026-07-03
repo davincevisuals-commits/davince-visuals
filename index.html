@@ -43,15 +43,18 @@
   <style>
     :root {
       --nav-height: 64px;
-      --bg: #000;
-      --surface: #111;
-      --text: #f5f5f5;
-      --muted: #aaa;
-      --accent: #00b5ad;
-      --accent2: #ff6600;
-      --border: #333;
-      --input-bg: #0a0a0a;
-      --input-border: #333;
+      --bg: #1a0e07;
+      --surface: #231409;
+      --text: #f0e6d0;
+      --muted: #b5a68e;
+      --accent: #c2714f;
+      --accent2: #d4a843;
+      --border: #3d2a1a;
+      --input-bg: #150b04;
+      --input-border: #3d2a1a;
+      --moss: #5a7a4a;
+      --cream: #f0e6d0;
+      --gold: #d4a843;
     }
 
     * {
@@ -71,15 +74,17 @@
     }
 
     body.light-mode {
-      --bg: #f5f7fb;
-      --surface: #fff;
-      --text: #111;
-      --muted: #666;
-      --accent: #00696b;
-      --accent2: #c65a00;
-      --border: #ddd;
-      --input-bg: #fff;
-      --input-border: #ccc;
+      --bg: #f5ede0;
+      --surface: #fdf6ed;
+      --text: #2c1a0e;
+      --muted: #7a6248;
+      --accent: #9e5235;
+      --accent2: #a87c1a;
+      --border: #d9c9b0;
+      --input-bg: #fdf6ed;
+      --input-border: #c9b699;
+      --moss: #4a6a3a;
+      --gold: #a87c1a;
     }
 
     /* Skip to Content Link */
@@ -130,14 +135,14 @@
     header h1 { 
       font-size: 3.5em; 
       margin: 0; 
-      color: #00b5ad; 
+      color: var(--accent); 
       animation: fadeInDown 2s; 
       z-index: 1; 
     }
 
     header p { 
       font-size: 1.3em; 
-      color: #ff6600; 
+      color: var(--accent2); 
       animation: fadeInUp 2s; 
       z-index: 1; 
     }
@@ -190,7 +195,7 @@
     nav a:hover, nav button.theme-toggle:hover { 
       color: var(--accent); 
       transform: translateY(-1px);
-      background: rgba(0, 181, 173, 0.1);
+      background: rgba(194, 113, 79, 0.12);
     }
 
     nav button.theme-toggle {
@@ -243,7 +248,7 @@
     section h2 {
       font-size: 2.1em;
       margin: 0 0 20px 0;
-      border-bottom: 2px solid #ff6600;
+      border-bottom: 2px solid var(--accent2);
       display: block;
       position: sticky;
       top: calc(var(--nav-height) + 12px);
@@ -261,16 +266,16 @@
     }
 
     .card { 
-      background: #1a1a1a; 
+      background: var(--surface); 
       padding: 25px; 
       border-radius: 10px; 
-      border: 1px solid #333; 
+      border: 1px solid var(--border); 
       text-align: center; 
       transition: 0.3s ease;
     }
 
     .card:hover { 
-      border-color: #00b5ad; 
+      border-color: var(--accent); 
       transform: translateY(-5px); 
     }
 
@@ -280,13 +285,13 @@
     }
 
     .card h3 { 
-      color: #00b5ad; 
+      color: var(--accent); 
       margin-top: 0; 
     }
 
     .price { 
       font-size: 1.5em; 
-      color: #ff6600; 
+      color: var(--accent2); 
       font-weight: bold; 
       margin: 15px 0; 
     }
@@ -347,8 +352,8 @@
 
     .preview-card, 
     .testimonial-card { 
-      background: #111; 
-      border: 1px solid #222; 
+      background: var(--surface); 
+      border: 1px solid var(--border); 
       border-radius: 14px; 
       padding: 24px; 
     }
@@ -356,7 +361,7 @@
     .preview-card h3, 
     .testimonial-card h3 { 
       margin-top: 0; 
-      color: #00b5ad; 
+      color: var(--accent); 
     }
 
     .video-box { 
@@ -385,7 +390,7 @@
     }
 
     .testimonial-stars { 
-      color: #ffb400; 
+      color: var(--gold); 
       margin-bottom: 12px; 
       font-size: 1.2em;
     }
@@ -398,12 +403,12 @@
 
     body.light-mode .preview-card, 
     body.light-mode .testimonial-card { 
-      background: #fff; 
-      border-color: #ddd; 
+      background: var(--surface); 
+      border-color: var(--border); 
     }
 
     body.light-mode .testimonial-card p { 
-      color: #333; 
+      color: var(--text); 
     }
 
     /* Gallery */
@@ -756,10 +761,10 @@
     .form-container { 
       max-width: 700px; 
       margin: auto; 
-      background: #111; 
+      background: var(--surface); 
       padding: 30px; 
       border-radius: 10px; 
-      border: 1px solid #222; 
+      border: 1px solid var(--border); 
     }
 
     input, 
@@ -768,9 +773,9 @@
       width: 100%; 
       padding: 12px; 
       border-radius: 5px; 
-      border: 1px solid #333; 
-      background: #0a0a0a; 
-      color: #fff; 
+      border: 1px solid var(--input-border); 
+      background: var(--input-bg); 
+      color: var(--text); 
       box-sizing: border-box; 
       margin-bottom: 15px; 
       font-family: inherit;
@@ -782,7 +787,7 @@
     select:focus {
       outline: none;
       border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(0, 181, 173, 0.1);
+      box-shadow: 0 0 0 3px rgba(194, 113, 79, 0.12);
     }
 
     textarea {
@@ -821,7 +826,7 @@
     .btn { 
       display: inline-block; 
       padding: 12px 25px; 
-      background: #00b5ad; 
+      background: var(--accent); 
       color: #fff; 
       text-decoration: none; 
       border-radius: 5px; 
@@ -832,7 +837,7 @@
     }
 
     .btn:hover { 
-      background: #008c82;
+      background: #9e5235;
       transform: translateY(-2px);
     }
 
@@ -842,40 +847,40 @@
     }
 
     body.light-mode .card { 
-      background: #fff; 
-      border-color: #ddd; 
+      background: var(--surface); 
+      border-color: var(--border); 
     }
 
     body.light-mode .form-container { 
-      background: #fff; 
-      border-color: #ddd; 
+      background: var(--surface); 
+      border-color: var(--border); 
     }
 
     body.light-mode input,
     body.light-mode textarea,
     body.light-mode select { 
-      background: #fff; 
-      color: #111; 
-      border-color: #ccc; 
+      background: var(--input-bg); 
+      color: var(--text); 
+      border-color: var(--input-border); 
     }
 
     body.light-mode footer { 
-      background: #f1f4f8; 
-      color: #555; 
-      border-top-color: #ddd; 
+      background: var(--surface); 
+      color: var(--muted); 
+      border-top-color: var(--border); 
     }
 
     body.light-mode .social-icons a { 
-      color: #111; 
+      color: var(--text); 
     }
 
     body.light-mode nav { 
-      background: #fff; 
+      background: var(--surface); 
     }
 
     body.light-mode nav a,
     body.light-mode nav button.theme-toggle { 
-      color: #111; 
+      color: var(--text); 
     }
 
     /* Socials */
@@ -894,7 +899,7 @@
     }
 
     .social-icons a:hover { 
-      color: #ff6600; 
+      color: var(--accent2); 
       transform: translateY(-3px);
     }
 
@@ -992,9 +997,9 @@
     footer { 
       text-align: center; 
       padding: 40px; 
-      background: #111; 
-      color: #777; 
-      border-top: 1px solid #222; 
+      background: var(--surface); 
+      color: var(--muted); 
+      border-top: 1px solid var(--border); 
     }
 
     /* Responsive Design */
@@ -1211,17 +1216,17 @@
       <h2>Our Services</h2>
       <div class="grid">
         <div class="card">
-          <i class="fas fa-camera fa-2x" style="color:#00b5ad"></i>
+          <i class="fas fa-camera fa-2x" style="color:#c2714f"></i>
           <h3>Photography</h3>
           <p>Professional wedding, portrait, and commercial shoots tailored to your vision. We capture moments that matter.</p>
         </div>
         <div class="card">
-          <i class="fas fa-video fa-2x" style="color:#00b5ad"></i>
+          <i class="fas fa-video fa-2x" style="color:#c2714f"></i>
           <h3>Film Production</h3>
           <p>Cinematic storytelling, editing, and color grading for events and brands. Transform your vision into compelling visuals.</p>
         </div>
         <div class="card">
-          <i class="fas fa-laptop-code fa-2x" style="color:#00b5ad"></i>
+          <i class="fas fa-laptop-code fa-2x" style="color:#c2714f"></i>
           <h3>IT Solutions</h3>
           <p>Technical support, web development, and digital security consulting. We empower your digital presence.</p>
         </div>
