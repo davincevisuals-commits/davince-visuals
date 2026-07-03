@@ -48,13 +48,11 @@
       --text: #f0e6d0;
       --muted: #b5a68e;
       --accent: #c2714f;
+      --accent-hover: #9e5235;
       --accent2: #d4a843;
       --border: #3d2a1a;
       --input-bg: #150b04;
       --input-border: #3d2a1a;
-      --moss: #5a7a4a;
-      --cream: #f0e6d0;
-      --gold: #d4a843;
     }
 
     * {
@@ -79,12 +77,11 @@
       --text: #2c1a0e;
       --muted: #7a6248;
       --accent: #9e5235;
+      --accent-hover: #7a3d26;
       --accent2: #a87c1a;
       --border: #d9c9b0;
       --input-bg: #fdf6ed;
       --input-border: #c9b699;
-      --moss: #4a6a3a;
-      --gold: #a87c1a;
     }
 
     /* Skip to Content Link */
@@ -390,7 +387,7 @@
     }
 
     .testimonial-stars { 
-      color: var(--gold); 
+      color: var(--accent2); 
       margin-bottom: 12px; 
       font-size: 1.2em;
     }
@@ -837,7 +834,7 @@
     }
 
     .btn:hover { 
-      background: #9e5235;
+      background: var(--accent-hover);
       transform: translateY(-2px);
     }
 
@@ -1216,17 +1213,17 @@
       <h2>Our Services</h2>
       <div class="grid">
         <div class="card">
-          <i class="fas fa-camera fa-2x" style="color:#c2714f"></i>
+          <i class="fas fa-camera fa-2x" style="color:var(--accent)"></i>
           <h3>Photography</h3>
           <p>Professional wedding, portrait, and commercial shoots tailored to your vision. We capture moments that matter.</p>
         </div>
         <div class="card">
-          <i class="fas fa-video fa-2x" style="color:#c2714f"></i>
+          <i class="fas fa-video fa-2x" style="color:var(--accent)"></i>
           <h3>Film Production</h3>
           <p>Cinematic storytelling, editing, and color grading for events and brands. Transform your vision into compelling visuals.</p>
         </div>
         <div class="card">
-          <i class="fas fa-laptop-code fa-2x" style="color:#c2714f"></i>
+          <i class="fas fa-laptop-code fa-2x" style="color:var(--accent)"></i>
           <h3>IT Solutions</h3>
           <p>Technical support, web development, and digital security consulting. We empower your digital presence.</p>
         </div>
