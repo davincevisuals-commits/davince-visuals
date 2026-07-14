@@ -871,14 +871,18 @@
       box-shadow: 0 14px 28px rgba(0,0,0,0.26);
     }
 
+    .btn:focus {
+      outline: 2px solid var(--accent2);
+      outline-offset: 2px;
+    }
+
     .btn:focus-visible {
       outline: 2px solid var(--accent2);
       outline-offset: 2px;
     }
 
     .btn:focus:not(:focus-visible) {
-      outline: 2px solid var(--accent2);
-      outline-offset: 2px;
+      outline: none;
     }
 
     body.light-mode .card { 

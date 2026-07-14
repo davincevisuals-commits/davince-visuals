@@ -56,8 +56,9 @@
       box-shadow: 0 10px 24px rgba(0,0,0,0.2);
     }
     .btn:hover { transform:translateY(-2px); filter: brightness(1.07); box-shadow: 0 14px 28px rgba(0,0,0,0.26); }
+    .btn:focus { outline:2px solid var(--accent2); outline-offset:2px; }
     .btn:focus-visible { outline:2px solid var(--accent2); outline-offset:2px; }
-    .btn:focus:not(:focus-visible) { outline:2px solid var(--accent2); outline-offset:2px; }
+    .btn:focus:not(:focus-visible) { outline:none; }
     img.logo { width:150px; margin-bottom:20px; }
   </style>
 </head>
