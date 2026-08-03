@@ -5,20 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
   <meta name="author" content="Davince Visuals">
   <meta name="robots" content="index, follow">
-  <meta name="description" content="Professional photography, cinematic film production, and digital art services in Uganda
-    . Expert IT solutions and creative software tools. Davince Visuals delivers premium creative services.">
+  <meta name="description" content="Professional photography, cinematic film production, and digital art services in Uganda. Expert IT solutions and creative software tools. Davince Visuals delivers premium creative services.">
   <meta name="keywords" content="Digital Artist Uganda, Professional Photography, Film Production, IT Solutions, Creative Services, Cinematic Storytelling">
-  
-  <!-- Open Graph Tags -->
+
   <meta property="og:title" content="Davince Visuals | Professional Photography, Film Production & Digital Art">
   <meta property="og:description" content="Premium creative services: Photography, Film Production, Digital Art, and IT Solutions in Uganda">
   <meta property="og:type" content="business.business">
-  <meta property="og:url" content="https://davince-visuals.vercel.app">
+  <meta property="og:url" content="https://davincevisuals.com">
   <meta property="og:image" content="davince-logo.png">
-  
+
   <title>Davince Visuals | Professional Photography, Film Production & Digital Art in Uganda</title>
-  
-  <!-- JSON-LD Schema -->
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -43,13 +40,11 @@
   <style>
     :root {
       --nav-height: 64px;
-      /* Palette from user image */
       --burnt-orange: #d15c00;
       --golden-orange: #fca311;
       --light-blue: #c4d3e6;
       --bright-teal: #00bfd1;
       --soft-gray: #9ea9ad;
-      /* Theme tokens */
       --bg: #eaf2f8;
       --surface: rgba(255, 255, 255, 0.88);
       --text: #24404a;
@@ -63,8 +58,6 @@
       --gradient-primary: linear-gradient(135deg, #f7fbff 0%, #dce8f3 45%, #c4d3e6 100%);
       --gradient-accent: linear-gradient(135deg, var(--golden-orange) 0%, var(--burnt-orange) 100%);
       --gradient-teal: linear-gradient(135deg, #00bfd1 0%, #54dbe8 100%);
-      --overlay-navy: rgba(44, 64, 74, 0.62);
-      --overlay-teal: rgba(0, 191, 209, 0.32);
     }
 
     * { box-sizing: border-box; }
@@ -143,7 +136,6 @@
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       padding: 15px 20px;
-      text-align: center;
       z-index: 1000;
       display: flex;
       justify-content: space-between;
@@ -165,6 +157,8 @@
       font-size: 0.9em;
       padding: 8px 12px;
       border-radius: 4px;
+      background: transparent;
+      border: none;
     }
 
     nav a:hover, nav button.theme-toggle:hover {
@@ -204,7 +198,6 @@
       font-size: 2.1em;
       margin: 0 0 20px 0;
       border-bottom: 2px solid var(--golden-orange);
-      display: block;
       position: sticky;
       top: calc(var(--nav-height) + 12px);
       z-index: 900;
@@ -216,35 +209,37 @@
       box-shadow: 0 4px 16px rgba(44,64,74,0.1);
     }
 
-    .grid {
+    .grid,
+    .preview-grid,
+    .testimonial-grid,
+    .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
+      gap: 24px;
     }
 
     .card,
     .preview-card,
-    .testimonial-card {
+    .testimonial-card,
+    .form-container {
       background: rgba(255, 255, 255, 0.84);
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
       padding: 25px;
       border-radius: 10px;
       border: 1px solid rgba(196, 211, 230, 0.8);
-      text-align: center;
-      transition: 0.3s ease;
       box-shadow: 0 12px 30px rgba(44,64,74,0.08);
     }
 
+    .card { text-align: center; transition: 0.3s ease; }
     .card:hover {
       border-color: var(--golden-orange);
       transform: translateY(-5px);
       box-shadow: 0 8px 32px rgba(44,64,74,0.14), 0 0 0 1px rgba(252,163,17,0.18);
     }
 
-    .card h3, .preview-card h3, .testimonial-card h3, .price {
-      color: var(--burnt-orange);
-    }
+    .card h3, .preview-card h3, .testimonial-card h3, .price { color: var(--burnt-orange); }
+    .price { font-size: 1.5em; font-weight: bold; margin: 15px 0; }
 
     .feature-list {
       list-style: none;
@@ -253,7 +248,6 @@
       color: #5f7480;
       font-size: 0.95em;
     }
-
     .feature-list li { margin-bottom: 10px; padding-left: 22px; position: relative; }
     .feature-list li::before { content: '✓'; position: absolute; left: 0; color: var(--bright-teal); }
 
@@ -261,17 +255,12 @@
     .store-actions .btn, .store-actions button { flex: 1 1 160px; width: auto; }
     .store-actions form { margin: 0; flex: 1 1 160px; }
 
-    .store-card img, .gallery img, .gallery video {
+    .store-card img,
+    .gallery img,
+    .gallery video {
       border-radius: 10px;
       width: 100%;
       object-fit: cover;
-    }
-
-    .preview-grid, .testimonial-grid, .gallery {
-      display: grid;
-      gap: 24px;
-      margin-top: 30px;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     }
 
     .video-box { border-radius: 12px; overflow: hidden; margin: 18px 0; background: #000; }
@@ -282,16 +271,116 @@
     .testimonial-author { margin-top: 16px; color: var(--bright-teal); font-size: 0.95em; }
 
     .compare-slider { position: relative; overflow: hidden; border-radius: 14px; line-height: 0; aspect-ratio: 16 / 10; background: #c4d3e6; }
-    .after-image { position: absolute; inset: 0 auto 0 0; width: 50%; height: 100%; overflow: hidden; z-index: 1; }
+    .compare-slider img { display: block; width: 100%; height: auto; }
+    .after-image { position: absolute; top: 0; left: 0; width: 50%; height: 100%; overflow: hidden; }
+    .after-image img { display: block; width: 100%; height: auto; }
     .slider-handle {
       position: absolute; top: 0; left: 50%; transform: translateX(-50%);
       width: 4px; height: 100%; background: rgba(255,255,255,0.95);
-      cursor: ew-resize; z-index: 2;
-      box-shadow: 0 0 10px rgba(255,255,255,0.3);
+      cursor: ew-resize; z-index: 2; box-shadow: 0 0 10px rgba(255,255,255,0.3);
     }
+
+    .fade-in-up { opacity: 0; transform: translateY(30px); transition: opacity 0.9s ease, transform 0.9s ease; }
+    .fade-in-up.visible { opacity: 1; transform: translateY(0); }
 
     .lightbox { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.95); display: none; align-items: center; justify-content: center; padding: 20px; z-index: 2000; overflow: hidden; }
     .lightbox.active { display: flex; }
+
+    .lightbox img,
+    .lightbox .video-wrapper { max-width: 100%; max-height: 100%; border-radius: 12px; box-shadow: 0 30px 80px rgba(0,0,0,0.7); }
+    .lightbox .video-wrapper { display: none; width: 100%; height: 100%; }
+    .lightbox .video-wrapper.active { display: block; }
+    .lightbox .video-wrapper iframe { width: 100%; height: 100%; border: 0; border-radius: 12px; }
+
+    .lightbox .nav-btn,
+    .lightbox .close-btn {
+      position: absolute;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.18);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      z-index: 2100;
+    }
+    .lightbox .nav-btn { top: 50%; transform: translateY(-50%); font-size: 1.6rem; }
+    .lightbox .nav-btn.prev { left: 20px; }
+    .lightbox .nav-btn.next { right: 20px; }
+    .lightbox .close-btn { top: 24px; right: 24px; width: 42px; height: 42px; }
+
+    .modal-overlay { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.8); display: none; align-items: center; justify-content: center; z-index: 3000; }
+    .modal-overlay.active { display: flex; }
+    .modal-content {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 40px;
+      border-radius: 12px;
+      text-align: center;
+      max-width: 500px;
+      box-shadow: 0 30px 80px rgba(44,64,74,0.2);
+      border: 1px solid rgba(196,211,230,0.8);
+    }
+    .modal-content h3 { color: var(--accent); margin-top: 0; font-size: 1.8em; }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 12px;
+      border-radius: 5px;
+      border: 1px solid var(--input-border);
+      background: var(--input-bg);
+      color: var(--text);
+      margin-bottom: 15px;
+      font-family: inherit;
+    }
+    textarea { resize: vertical; }
+    label { display: block; margin-bottom: 8px; color: var(--muted); font-size: 0.9em; font-weight: 500; }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 25px;
+      background: var(--gradient-accent);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 4px 14px rgba(255, 100, 36, 0.35);
+    }
+
+    .social-icons { margin-top: 20px; text-align: center; }
+    .social-icons a { margin: 0 15px; color: #fff; font-size: 2em; text-decoration: none; display: inline-block; }
+    .social-icons a:hover { color: var(--burnt-orange); }
+
+    .chat-widget { position: fixed; bottom: 30px; right: 30px; z-index: 2000; }
+    .chat-btn {
+      background: #25d366;
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      box-shadow: 0 4px 12px rgba(37,211,102,0.4);
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      background: rgba(255,255,255,0.65);
+      color: var(--muted);
+      border-top: 1px solid rgba(196,211,230,0.9);
+      margin-top: 40px;
+    }
 
     @media (max-width: 768px) {
       .menu-toggle { display: block; }
@@ -311,17 +400,88 @@
       <a href="#about">About</a>
       <a href="#services">Services</a>
       <a href="#portfolio">Portfolio</a>
+      <a href="#testimonials">Testimonials</a>
       <a href="#contact">Contact</a>
       <button class="theme-toggle">Toggle Theme</button>
     </div>
   </nav>
+
   <header>
     <img src="davince-logo.png" alt="Davince Visuals logo" class="logo">
     <h1>Davince Visuals</h1>
     <p>Creative storytelling through photography, film, and digital art</p>
   </header>
+
   <main id="main">
-    <!-- existing site content remains below -->
+    <section id="about">
+      <h2>About</h2>
+      <div class="card">
+        <p>Davince Visuals delivers professional photography, cinematic film production, digital art, and IT solutions tailored for brands, events, and creators in Uganda.</p>
+      </div>
+    </section>
+
+    <section id="services">
+      <h2>Services</h2>
+      <div class="grid">
+        <div class="card"><h3>Photography</h3><p>Portraits, events, brands, and lifestyle visuals.</p></div>
+        <div class="card"><h3>Film Production</h3><p>Cinematic storytelling, music videos, and promos.</p></div>
+        <div class="card"><h3>Digital Art</h3><p>Creative design and visual concepts for campaigns.</p></div>
+      </div>
+    </section>
+
+    <section id="portfolio">
+      <h2>Portfolio</h2>
+      <div class="gallery">
+        <img src="portfolio1.jpg" alt="Portfolio image 1">
+        <img src="portfolio2.jpg" alt="Portfolio image 2">
+        <img src="portfolio3.jpg" alt="Portfolio image 3">
+        <img src="portfolio4.jpg" alt="Portfolio image 4">
+        <img src="portfolio5.jpg" alt="Portfolio image 5">
+      </div>
+    </section>
+
+    <section id="testimonials">
+      <h2>Testimonials</h2>
+      <div class="testimonial-grid">
+        <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><p>Excellent creative work and professional delivery.</p><div class="testimonial-author">Client Review</div></div>
+        <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><p>Beautiful visuals and great attention to detail.</p><div class="testimonial-author">Client Review</div></div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="form-container">
+        <form>
+          <label>Name</label>
+          <input type="text" placeholder="Your name">
+          <label>Email</label>
+          <input type="email" placeholder="Your email">
+          <label>Message</label>
+          <textarea rows="5" placeholder="Tell us about your project"></textarea>
+          <button class="btn" type="submit">Send Message</button>
+        </form>
+      </div>
+      <div class="social-icons">
+        <a href="https://tiktok.com/@davincevisuals" aria-label="TikTok">♪</a>
+        <a href="https://youtube.com/@davincevisuals8191" aria-label="YouTube">▶</a>
+      </div>
+    </section>
   </main>
+
+  <div class="chat-widget">
+    <a class="chat-btn" href="https://wa.me/256774231123" aria-label="Chat on WhatsApp">💬</a>
+  </div>
+
+  <footer>
+    © Davince Visuals
+  </footer>
+
+  <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    const themeToggle = document.querySelector('.theme-toggle');
+    menuToggle?.addEventListener('click', () => navLinks.classList.toggle('open'));
+    themeToggle?.addEventListener('click', () => document.body.classList.toggle('light-mode'));
+  </script>
 </body>
 </html>
