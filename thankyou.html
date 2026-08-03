@@ -5,13 +5,55 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Thank You - Davince Visuals</title>
   <style>
-    body { font-family: 'Helvetica Neue', sans-serif; background:#1a0e07; color:#f0e6d0; text-align:center; padding:50px; }
-    .container { max-width:600px; margin:auto; background:#231409; padding:40px; border-radius:8px; border:1px solid #3d2a1a; }
-    h1 { color:#c2714f; }
-    p { margin:20px 0; }
-    .btn { display:inline-block; padding:12px 25px; background:#c2714f; color:#fff; text-decoration:none; border-radius:5px; margin-top:20px; font-weight:bold; transition:background 0.3s ease, transform 0.2s ease; }
-    .btn:hover { background:#9e5235; transform:translateY(-2px); }
-    img.logo { width:150px; margin-bottom:20px; }
+    :root {
+      --deep-navy: #0C3B56;
+      --charcoal: #4B565E;
+      --sunset-orange: #FF9732;
+      --vibrant-orange: #FF6424;
+      --muted-teal: #4F8F88;
+      --deep-teal: #267A79;
+    }
+    body {
+      font-family: 'Helvetica Neue', sans-serif;
+      background: linear-gradient(135deg, #071e2c 0%, #0C3B56 50%, #267A79 100%);
+      background-attachment: fixed;
+      color: #e8f4f8;
+      text-align: center;
+      padding: 50px 20px;
+      min-height: 100vh;
+      margin: 0;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: rgba(12, 59, 86, 0.75);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 40px;
+      border-radius: 12px;
+      border: 1px solid rgba(38, 122, 121, 0.4);
+      box-shadow: 0 20px 60px rgba(7, 30, 44, 0.5);
+    }
+    h1 { color: var(--sunset-orange); }
+    p { margin: 20px 0; color: #a8ccd8; line-height: 1.6; }
+    .btn {
+      display: inline-block;
+      padding: 12px 25px;
+      background: linear-gradient(135deg, #FF9732 0%, #FF6424 100%);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-top: 20px;
+      font-weight: bold;
+      transition: filter 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 14px rgba(255, 100, 36, 0.4);
+    }
+    .btn:hover {
+      filter: brightness(1.1);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(255, 100, 36, 0.55);
+    }
+    img.logo { width: 150px; margin-bottom: 20px; }
   </style>
 </head>
 <body>
