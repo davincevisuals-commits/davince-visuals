@@ -148,7 +148,7 @@
     .nav-brand { font-weight: bold; color: var(--golden-orange); font-size: 1.1em; margin-right: auto; }
     .nav-links { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
 
-    nav a, nav button.theme-toggle {
+    nav a, nav button.theme-toggle, nav button.menu-toggle {
       margin: 0 8px;
       color: #fff;
       text-decoration: none;
@@ -161,7 +161,7 @@
       border: none;
     }
 
-    nav a:hover, nav button.theme-toggle:hover {
+    nav a:hover, nav button.theme-toggle:hover, nav button.menu-toggle:hover {
       color: var(--golden-orange);
       transform: translateY(-1px);
       background: rgba(252, 163, 17, 0.14);
@@ -395,14 +395,14 @@
   <a href="#main" class="skip-to-content">Skip to content</a>
   <nav>
     <div class="nav-brand">Davince Visuals</div>
-    <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+    <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
     <div class="nav-links">
       <a href="#about">About</a>
       <a href="#services">Services</a>
       <a href="#portfolio">Portfolio</a>
       <a href="#testimonials">Testimonials</a>
       <a href="#contact">Contact</a>
-      <button class="theme-toggle">Toggle Theme</button>
+      <button class="theme-toggle" type="button">Toggle Theme</button>
     </div>
   </nav>
 
@@ -472,15 +472,18 @@
     <a class="chat-btn" href="https://wa.me/256774231123" aria-label="Chat on WhatsApp">💬</a>
   </div>
 
-  <footer>
-    © Davince Visuals
-  </footer>
+  <footer>© Davince Visuals</footer>
 
   <script>
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
     const themeToggle = document.querySelector('.theme-toggle');
-    menuToggle?.addEventListener('click', () => navLinks.classList.toggle('open'));
+
+    menuToggle?.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(open));
+    });
+
     themeToggle?.addEventListener('click', () => document.body.classList.toggle('light-mode'));
   </script>
 </body>
