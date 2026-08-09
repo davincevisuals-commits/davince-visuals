@@ -1651,7 +1651,7 @@
       alt: img.alt || 'Portfolio image',
     }));
 
-    if (videoTrigger) {
+    if (videoTrigger && videoTrigger.dataset.videoSrc) {
       lightboxItems.push({
         type: 'video',
         src: videoTrigger.dataset.videoSrc,
@@ -1694,7 +1694,7 @@
       img.setAttribute('role', 'button');
     });
 
-    if (videoTrigger) {
+    if (videoTrigger && videoTrigger.dataset.videoSrc) {
       videoTrigger.addEventListener('click', () => {
         showLightboxItem(lightboxItems.length - 1);
       });
@@ -1704,6 +1704,9 @@
       lightbox.classList.remove('active');
       lightbox.setAttribute('aria-hidden', 'true');
       lightboxVideo.src = '';
+      lightboxImage.removeAttribute('src');
+      lightboxImage.style.display = 'none';
+      lightboxVideoWrapper.classList.remove('active');
       document.body.style.overflow = '';
     };
 
