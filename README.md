@@ -15,10 +15,10 @@ Official static website for **Davince Visuals** featuring photography, film prod
 
 ## Project Structure
 
-- `/home/runner/work/davince-visuals/davince-visuals/index.html` — main website page
-- `/home/runner/work/davince-visuals/davince-visuals/thankyou.html` — post-submission confirmation page
-- `/home/runner/work/davince-visuals/davince-visuals/styles.css` — shared stylesheet
-- `/home/runner/work/davince-visuals/davince-visuals/*.jpg|*.png` — brand and portfolio assets
+- `index.html` — main website page
+- `thankyou.html` — post-submission confirmation page
+- `styles.css` — shared stylesheet
+- `*.jpg|*.png` — brand and portfolio assets
 
 ## Local Development
 
@@ -29,7 +29,7 @@ Open `index.html` in a browser.
 
 ### Option 2: Run a local static server (recommended)
 ```bash
-cd /home/runner/work/davince-visuals/davince-visuals
+cd davince-visuals
 python -m http.server 8080
 ```
 Then visit http://localhost:8080.

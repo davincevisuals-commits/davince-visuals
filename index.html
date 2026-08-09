@@ -666,14 +666,15 @@
 
     const getValidationMessage = (field) => {
       const value = field.value.trim();
+      const labelText = field.labels?.[0]?.textContent || field.getAttribute('aria-label') || field.name || 'This field';
       if (field.validity.valueMissing) {
-        return `${field.previousElementSibling.textContent} is required.`;
+        return `${labelText} is required.`;
       }
       if (field.type === 'email' && field.validity.typeMismatch) {
         return 'Please enter a valid email address.';
       }
       if (value && field.hasAttribute('required') && value.length < 2) {
-        return `${field.previousElementSibling.textContent} is too short.`;
+        return `${labelText} is too short.`;
       }
       return '';
     };
